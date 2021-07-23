@@ -1,0 +1,80 @@
+{
+  "type": "web",
+  "devices": {
+    "lgg2": {
+      "root_disable_charging": "True",
+      "charging_disabled_value": 0,
+      "usb_charging_disabled_file": "/sys/class/power_supply/battery/charging_enabled"
+    }
+  },
+  "repetitions": 2,
+  "randomization": true,
+  "clear_cache": true,
+  "duration": 6000,
+  "monkeyrunner_path": "/home/salvatore/Android/Sdk/tools/bin/monkeyrunner",
+  "browsers": [
+    "chrome"
+  ],
+  "paths": [
+    "http://192.168.1.57:2020/lacunaWebPages/www.bbc.com/www.bbc.com/0/"
+  ],
+  "profilers": {
+    "trepn": {
+      "subject_aggregation": "default",
+      "experiment_aggregation": "default",
+      "preferences": {
+        "profiling_interval": 100,
+        "battery_power_source_selection": "Direct Power"
+      },
+      "data_points": [
+        "mobile_data",
+        "wifi",
+        "wifi_rssi",
+        "screen_state",
+        "battery_remaining",
+        "bluetooth_state",
+        "gps_state",
+        "battery_temp",
+        "mem_usage",
+        "screen_brightness",
+        "battery_power",
+        "gpu_freq",
+        "gpu_load",
+        "cpu_load",
+        "cpu_load_normalized",
+        "processor_temp",
+        "cpu1_freq",
+        "cpu2_freq",
+        "cpu3_freq",
+        "cpu4_freq",
+        "cpu1_load",
+        "cpu2_load",
+        "cpu3_load",
+        "cpu4_load"
+      ]
+    }
+  },
+  "scripts": {
+    "before_experiment": "Scripts/before_experiment.py",
+    "before_run": [
+      {
+        "type": "monkeyreplay",
+        "path": "Scripts/azioniF.txt",
+        "timeout": 500
+      }
+    ],
+    "after_launch": "Scripts/after_launch.py",
+    "interaction": [
+      {
+        "type": "python3",
+        "path": "Scripts/interaction.py",
+        "timeout": 500,
+        "logcat_regex": "some keyword"
+      }
+    ],
+    "before_close": "Scripts/before_close.py",
+    "after_run": "Scripts/after_run.py",
+    "after_experiment": "Scripts/after_experiment.py"
+  },
+  "time_between_run": 120000
+}

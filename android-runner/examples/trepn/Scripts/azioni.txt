@@ -1,0 +1,6 @@
+{"type": "touch", "y": 1664, "down": 11, "up": 11, "x": 529 }
+{"type": "touch", "y": 1664, "down": 11, "up": 11, "x": 529 }
+{"type": "touch", "y": 1676, "down": 11, "up": 11, "x": 165 }
+{"type": "touch", "y": 1328, "down": 11, "up": 11, "x": 300 }
+
+

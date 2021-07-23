@@ -1,0 +1,33 @@
+diff --git a/src/dk/brics/tajs/monitoring/Monitoring.java b/src/dk/brics/tajs/monitoring/Monitoring.java
+index 2edb93a5..607d4f9f 100644
+--- a/src/dk/brics/tajs/monitoring/Monitoring.java
++++ b/src/dk/brics/tajs/monitoring/Monitoring.java
+@@ -689,17 +689,17 @@ public class Monitoring implements IAnalysisMonitoring {
+ 
+         if (Options.get().isCallGraphEnabled()) {
+             log.info(callgraph.toString());
+-            File outdir = new File("out");
+-            if (!outdir.exists()) {
+-                outdir.mkdir();
+-            }
+-            String filename = "out" + File.separator + "callgraph.dot";
+-            try (FileWriter f = new FileWriter(filename)) {
+-                log.info("Writing call graph to " + filename);
+-                callgraph.toDot(new PrintWriter(f));
+-            } catch (IOException e) {
+-                log.error("Unable to write " + filename + ": " + e.getMessage());
+-            }
++            // File outdir = new File("out");
++            // if (!outdir.exists()) {
++            //     outdir.mkdir();
++            // }
++            // String filename = "out" + File.separator + "callgraph.dot";
++            // try (FileWriter f = new FileWriter(filename)) {
++            //     log.info("Writing call graph to " + filename);
++            //     callgraph.toDot(new PrintWriter(f));
++            // } catch (IOException e) {
++            //     log.error("Unable to write " + filename + ": " + e.getMessage());
++            // }
+         }
+     }
+ 

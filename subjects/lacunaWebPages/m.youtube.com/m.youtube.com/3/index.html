@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html><head><script src="/node_modules/perfume.js/dist/perfume.umd.min.js"></script><script>function xml_http_post(url, data, callback) {var req = new XMLHttpRequest(); req.open("POST", url, true); req.send(data);} setTimeout(function(){ if(LoadingEnd == 0){LoadingEnd = window.performance.timing.loadEventEnd; LoadingTime = LoadingEnd - LoadingStart;}  objectToSend="{ 'WebName':"+window.location.href+", 'Load':"+LoadingTime+", 'Start':"+LoadingStart+",'End':"+LoadingEnd+", 'PerfumeResult':"+JSON.stringify(perfumeResults)+"}"; xml_http_post("http://192.168.1.57:8081/",objectToSend,null); }, 18000); perfumeResults = []; const perfume = new Perfume({  analyticsTracker: (options) => {    const { metricName, data, eventProperties, navigatorInformation } = options;     perfumeResults.push(options); } }); function load_log() {LoadingTime = (window.performance.timing.loadEventEnd-window.performance.timing.requestStart); LoadingStart = window.performance.timing.requestStart; LoadingEnd= window.performance.timing.loadEventEnd}; window.addEventListener ?window.addEventListener("load",load_log, true) : window.attachEvent && window.attachEvent("onload", load_log);</script>
+<meta content="app-id=544007664, app-argument=http://youtube.com/?referring_app=com.apple.mobilesafari-smartbanner, affiliate-data=ct=smart_app_banner_polymer&amp;pt=9008" name="apple-itunes-app"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<meta content="hsl(0, 0%, 100%)" id="theme-meta" name="theme-color"/>
+<link href="https://s.ytimg.com/yts/img/favicon-vfl8qSV2F.ico" rel="shortcut icon" type="image/x-icon"/>
+<link href="https://s.ytimg.com/yts/img/favicon-vfl8qSV2F.ico" rel="icon" type="image/x-icon"/>
+<title>YouTube</title>
+</head>
+<body dir="ltr" lang="en">
+<script src="lacuna_cache/exported_6bzld7.js"></script>
+<script src="lacuna_cache/exported_gflsdc.js"></script>
+<script src="lacuna_cache/exported_vxuuuj.js"></script>
+<style>
+        html {
+            background-color: white;
+        }
+    </style>
+<style name="mweb_inline_ghost_card_styles">
+        @-webkit-keyframes spinner {
+            0% {
+                -webkit-transform: rotate(0deg)
+            }
+            to {
+                -webkit-transform: rotate(360deg)
+            }
+        }
+
+        @keyframes spinner {
+            0% {
+                transform: rotate(0deg)
+            }
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .spinner {
+            display: block;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 12px auto;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid #eee;
+            border-top-color: #666;
+            -webkit-animation: spinner .8s linear infinite;
+            animation: spinner .8s linear infinite
+        }
+
+        .spinner:not([hidden]) {
+            color: #333;
+            font-size: 1.6rem
+        }
+
+        html {
+            font-size: 10px;
+            font-family: Roboto, Arial, sans-serif
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+            font-size: 1.2rem;
+            overflow-x: hidden
+        }
+
+        [hidden][hidden] {
+            display: none;
+            visibility: hidden
+        }
+
+        ytm-app>.spinner {
+            margin-top: 100px
+        }
+
+        ytm-header {
+            display: block
+        }
+
+        header {
+            height: 48px
+        }
+
+        .header-bar-content,
+        .header-bar-endpoint,
+        .mobile-topbar-header-content,
+        .mobile-topbar-header-endpoint {
+            visibility: visible
+        }
+
+        .player-container {
+            position: absolute;
+            top: 48px;
+            right: 0;
+            right: env(safe-area-inset-right);
+            left: 0;
+            left: env(safe-area-inset-left);
+            overflow: hidden;
+            z-index: 1;
+            direction: ltr
+        }
+
+        [has-player-custom-control="true"] .player-container {
+            overflow: visible !important
+        }
+
+        .player-size {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+            background-color: #000
+        }
+
+        .player-api {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -ms-flex-align: center;
+            -moz-box-align: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            -ms-flex-pack: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center
+        }
+
+        .player-api[hidden],
+        .player-api[playable="false"],
+        .player-api[loading="true"] {
+            display: none
+        }
+
+        .html5-video-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            cursor: pointer
+        }
+
+        ytm-app {
+            display: block
+        }
+
+        [has-soft-bar="true"] ytm-app {
+            padding-bottom: 30px
+        }
+
+        [has-pivot-bar="true"] ytm-app {
+            padding-bottom: 48px
+        }
+
+        ytm-header.sticky-player,
+        ytm-header-bar.sticky-player,
+        ytm-mobile-topbar-renderer.sticky-player {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 3;
+            padding: 0;
+            padding: 0 env(safe-area-inset-right) 0 env(safe-area-inset-left)
+        }
+
+        ytm-header-bar.sticky-player.out,
+        ytm-mobile-topbar-renderer.sticky-player.out {
+            top: -48px;
+            transition: transform 195ms cubic-bezier(0.4, 0.0, 1, 1);
+            transition-property: all
+        }
+
+        ytm-header-bar.sticky-player.in,
+        ytm-mobile-topbar-renderer.sticky-player.in {
+            top: 0;
+            transition: transform 225ms cubic-bezier(0.0, 0.0, 0.2, 1);
+            transition-property: all
+        }
+
+        .player-container.sticky-player {
+            position: fixed;
+            top: 48px;
+            right: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 1
+        }
+
+        ytm-app.sticky-player {
+            display: block;
+            padding-top: 48px
+        }
+
+        @media (min-width:800px) and (min-device-width:550px) and (orientation:landscape) {
+            .player-container,
+            .player-container.sticky-player {
+                right: 256px
+            }
+            .player-placeholder-wrapper {
+                width: calc(100% - 256px)
+            }
+        }
+
+        @media (min-width:1280px) and (min-device-height:550px) and (orientation:landscape) {
+            .player-container,
+            .player-container.sticky-player {
+                right: 500px
+            }
+            .player-placeholder-wrapper {
+                width: calc(100% - 500px)
+            }
+        }
+
+        @media (max-width:799px) and (orientation:landscape),
+        (max-device-width:549px) and (orientation:landscape) {
+            .player-size {
+                padding-bottom: calc(56.25% - 96px)
+            }
+        }
+
+        @media (max-width:299px) and (orientation:landscape),
+        (max-width:299px) and (orientation:portrait) {
+            .player-size {
+                padding-bottom: 56.25%
+            }
+        }
+
+        @media (max-width:320px) and (max-height:240px) and (orientation:landscape) {
+            .player-size {
+                padding-bottom: 56.25%
+            }
+        }
+
+        @media (min-width:800px) and (min-device-width:550px) and (orientation:landscape),
+        (min-width:550px) and (min-device-height:800px) and (orientation:portrait) {
+            ytm-app {
+                padding-top: 48px
+            }
+            ytm-header,
+            ytm-header-bar,
+            ytm-mobile-topbar-renderer {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 3
+            }
+        }
+
+        .content-error {
+            font-size: 1.4rem;
+            padding: 12px;
+            text-align: center
+        }
+
+        ytm-large-media-item {
+            display: block;
+            padding: 0 12px;
+            min-width: 0
+        }
+
+        ytm-large-media-item>a {
+            display: block
+        }
+
+        .large-media-item-metadata {
+            display: block;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            -webkit-flex-grow: 1;
+            flex-grow: 1;
+            min-width: 0
+        }
+
+        .large-media-item-top-badges ytm-metadata-badge-renderer {
+            display: block
+        }
+
+        .large-media-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 12px
+        }
+
+        .large-media-channel {
+            -webkit-flex-shrink: 0;
+            -ms-flex-negative: 0;
+            flex-shrink: 0
+        }
+
+        .large-media-item-info,
+        ytm-large-media-item .details {
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            -webkit-flex-grow: 1;
+            flex-grow: 1;
+            min-width: 0
+        }
+
+        .large-media-item-info {
+            -ms-flex-align: start;
+            -moz-box-align: start;
+            -webkit-box-align: start;
+            -webkit-align-items: flex-start;
+            align-items: flex-start
+        }
+
+        .large-media-item-headline-placeholder {
+            height: 16px;
+            max-width: 300px;
+            margin-bottom: 8px;
+            background-color: hsla(0, 0%, 53.3%, .2);
+            border-radius: 2px
+        }
+
+        .large-media-item-subhead-placeholder {
+            height: 16px;
+            width: 120px;
+            margin-bottom: 3px;
+            background-color: hsla(0, 0%, 53.3%, .2);
+            border-radius: 2px
+        }
+
+        .large-media-item-menu {
+            -webkit-flex-shrink: 0;
+            -ms-flex-negative: 0;
+            flex-shrink: 0
+        }
+
+        .large-media-item-byline {
+            unicode-bidi: isolate
+        }
+
+        ytm-large-media-item .details.feature-phone-minimal-lockups .large-media-channel {
+            display: none
+        }
+
+        ytm-large-media-item .details {
+            margin-top: 12px;
+            margin-bottom: 24px
+        }
+
+        ytm-browse ytm-item-section-renderer:first-of-type ytm-large-media-item {
+            margin: -12px 0 0
+        }
+
+        @media (min-width:550px) and (min-device-height:800px) and (orientation:portrait) {
+            ytm-browse ytm-item-section-renderer:first-of-type ytm-promoted-video-renderer ytm-large-media-item {
+                margin-top: 0
+            }
+        }
+
+        @media (min-aspect-ratio:13/9) and (orientation:landscape),
+        (min-width:800px) and (min-device-width:550px) and (orientation:landscape) {
+            ytm-large-media-item {
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                min-width: 0
+            }
+            .large-media-item-thumbnail-container {
+                -webkit-flex-shrink: 0;
+                -ms-flex-negative: 0;
+                flex-shrink: 0
+            }
+            ytm-large-media-item .video-thumbnail-container-large {
+                width: 200px;
+                height: 112px;
+                padding-bottom: 0
+            }
+            ytm-large-media-item .details {
+                -moz-box-orient: vertical;
+                -webkit-box-orient: vertical;
+                -ms-flex-direction: column;
+                -webkit-flex-direction: column;
+                flex-direction: column;
+                margin: 0 12px;
+                min-width: 0;
+                width: 100%
+            }
+            .large-media-item-info {
+                -webkit-box-flex: 0;
+                -ms-flex-positive: 0;
+                -webkit-flex-grow: 0;
+                flex-grow: 0
+            }
+            .large-media-item-metadata {
+                margin-bottom: 2px;
+                max-height: 70px;
+                overflow: hidden;
+                min-width: 0
+            }
+            .large-media-channel {
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-box-flex: 1;
+                -ms-flex-positive: 1;
+                -webkit-flex-grow: 1;
+                flex-grow: 1;
+                -webkit-box-ordinal-group: 2;
+                -webkit-order: 1;
+                -ms-flex-order: 1;
+                order: 1;
+                width: 100%
+            }
+            .large-media-item-extra-endpoint {
+                -webkit-box-flex: 1;
+                -ms-flex-positive: 1;
+                -webkit-flex-grow: 1;
+                flex-grow: 1
+            }
+            ytm-browse ytm-item-section-renderer:first-of-type ytm-large-media-item {
+                margin-top: 0
+            }
+        }
+
+        @media (max-width:299px) and (orientation:landscape),
+        (max-width:299px) and (orientation:portrait) {
+            ytm-large-media-item {
+                padding: 0 8px
+            }
+            ytm-large-media-item .details {
+                margin-top: 12px;
+                margin-bottom: 12px
+            }
+            ytm-browse ytm-item-section-renderer:first-of-type ytm-large-media-item {
+                margin-top: 8px
+            }
+        }
+
+        .video-thumbnail-container-large,
+        .video-thumbnail-container-compact {
+            position: relative;
+            -webkit-flex-shrink: 0;
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            overflow: hidden
+        }
+
+        .video-thumbnail-bg {
+            background-color: hsla(0, 0%, 53.3%, .2)
+        }
+
+        .video-thumbnail-container-large {
+            padding-bottom: 56.25%
+        }
+
+        .video-thumbnail-container-compact {
+            width: 160px;
+            height: 90px
+        }
+
+        @media (max-width:549px) and (orientation:portrait),
+        (max-device-height:799px) and (orientation:portrait) {
+            ytm-item-section-renderer:first-of-type .video-thumbnail-container-large {
+                margin-top: 0
+            }
+            .video-thumbnail-container-large {
+                margin: -13px -12px 0;
+                padding-top: 13px
+            }
+        }
+
+        @media (max-width:299px) and (orientation:portrait) {
+            .video-thumbnail-container-large {
+                margin: 0;
+                padding-top: 0
+            }
+        }
+
+        ytm-pivot-bar-renderer {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -ms-flex-pack: justify;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-around;
+            justify-content: space-around;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0;
+            padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+            z-index: 2;
+            height: 48px;
+            border-top: 1px solid hsla(0, 0%, 53.3%, .4);
+            background: #fff;
+            color: hsla(0, 0%, 6.7%, .6);
+            font-size: 1.1rem
+        }
+
+        .details {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            margin-top: 12px
+        }
+
+        .item {
+            margin-top: 12px;
+            display: block
+        }
+
+        .item:last-child {
+            margin-bottom: 12px
+        }
+
+        @media (max-width:299px) and (orientation:landscape),
+        (max-width:299px) and (orientation:portrait) {
+            .item {
+                margin-top: 8px
+            }
+        }
+
+        ytm-item-section-renderer {
+            display: block;
+            border-bottom: 1px solid hsla(0, 0%, 53.3%, .4)
+        }
+
+        @media (max-width:299px) and (orientation:landscape),
+        (max-width:299px) and (orientation:portrait) {
+            ytm-item-section-renderer.feature-phone-minimal-lockups .icon-button {
+                padding: 0 0 0 8px;
+                width: 24px;
+                height: 24px
+            }
+        }
+
+        ytm-profile-icon {
+            display: inline-block;
+            overflow: hidden;
+            -webkit-flex-shrink: 0;
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background-color: hsla(0, 0%, 53.3%, .2)
+        }
+
+        .compact-media-item {
+            padding: 0 12px;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex
+        }
+
+        .compact-media-item-image {
+            -webkit-flex-shrink: 0;
+            -ms-flex-negative: 0;
+            flex-shrink: 0
+        }
+
+        .compact-media-item-metadata {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            -webkit-flex-grow: 1;
+            flex-grow: 1;
+            min-width: 0;
+            overflow: visible
+        }
+
+        .compact-media-item-metadata-content {
+            display: block;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            -webkit-flex-grow: 1;
+            flex-grow: 1;
+            min-width: 0;
+            overflow: hidden;
+            padding: 0 8px
+        }
+
+        .compact-media-item-headline-placeholder {
+            height: 16px;
+            max-width: 300px;
+            margin-bottom: 8px;
+            background-color: hsla(0, 0%, 53.3%, .2);
+            border-radius: 2px
+        }
+
+        .compact-media-item-subhead-placeholder {
+            height: 16px;
+            width: 120px;
+            margin-bottom: 3px;
+            background-color: hsla(0, 0%, 53.3%, .2);
+            border-radius: 2px
+        }
+    </style>
+<div class="player-container sticky-player" id="player-container-id">
+<div class="player-api player-size" hidden="" id="player"></div>
+</div>
+<ytm-app class="sticky-player" id="app">
+<ytm-header class="sticky-player" id="header">
+<header style="background-color: hsl(0, 0%, 100%); box-shadow: 0 2px 2px rgba(0,0,0,0.2);">
+</header>
+</ytm-header>
+<div class="player-placeholder-wrapper" hidden="">
+<div class="player-size sticky-player"></div>
+</div>
+<ytm-pivot-bar-renderer></ytm-pivot-bar-renderer>
+<ytm-browse>
+<ytm-single-column-browse-results-renderer>
+<div>
+<div>
+<ytm-section-list-renderer>
+<lazy-list>
+<ytm-item-section-renderer class="" section-identifier="">
+<lazy-list>
+<ytm-video-with-context-renderer class="item">
+<ytm-large-media-item>
+<a class="large-media-item-thumbnail-container">
+<div class="video-thumbnail-container-large video-thumbnail-bg"></div>
+</a>
+<div class="details">
+<div class="large-media-channel">
+<ytm-profile-icon class="large-media-icon"></ytm-profile-icon>
+</div>
+<div class="large-media-item-info">
+<a class="large-media-item-metadata">
+<div class="large-media-item-headline-placeholder"></div>
+<div class="large-media-item-subhead-placeholder"></div>
+</a>
+</div>
+</div>
+</ytm-large-media-item>
+</ytm-video-with-context-renderer>
+</lazy-list>
+</ytm-item-section-renderer>
+<ytm-item-section-renderer class="" section-identifier="">
+<lazy-list>
+<ytm-video-with-context-renderer class="item">
+<ytm-large-media-item>
+<a class="large-media-item-thumbnail-container">
+<div class="video-thumbnail-container-large video-thumbnail-bg"></div>
+</a>
+<div class="details">
+<div class="large-media-channel">
+<ytm-profile-icon class="large-media-icon"></ytm-profile-icon>
+</div>
+<div class="large-media-item-info">
+<a class="large-media-item-metadata">
+<div class="large-media-item-headline-placeholder"></div>
+<div class="large-media-item-subhead-placeholder"></div>
+</a>
+</div>
+</div>
+</ytm-large-media-item>
+</ytm-video-with-context-renderer>
+</lazy-list>
+</ytm-item-section-renderer>
+<ytm-item-section-renderer class="" section-identifier="">
+<lazy-list>
+<ytm-video-with-context-renderer class="item">
+<ytm-large-media-item>
+<a class="large-media-item-thumbnail-container">
+<div class="video-thumbnail-container-large video-thumbnail-bg"></div>
+</a>
+<div class="details">
+<div class="large-media-channel">
+<ytm-profile-icon class="large-media-icon"></ytm-profile-icon>
+</div>
+<div class="large-media-item-info">
+<a class="large-media-item-metadata">
+<div class="large-media-item-headline-placeholder"></div>
+<div class="large-media-item-subhead-placeholder"></div>
+</a>
+</div>
+</div>
+</ytm-large-media-item>
+</ytm-video-with-context-renderer>
+</lazy-list>
+</ytm-item-section-renderer>
+<ytm-item-section-renderer class="" section-identifier="">
+<lazy-list>
+<ytm-video-with-context-renderer class="item">
+<ytm-large-media-item>
+<a class="large-media-item-thumbnail-container">
+<div class="video-thumbnail-container-large video-thumbnail-bg"></div>
+</a>
+<div class="details">
+<div class="large-media-channel">
+<ytm-profile-icon class="large-media-icon"></ytm-profile-icon>
+</div>
+<div class="large-media-item-info">
+<a class="large-media-item-metadata">
+<div class="large-media-item-headline-placeholder"></div>
+<div class="large-media-item-subhead-placeholder"></div>
+</a>
+</div>
+</div>
+</ytm-large-media-item>
+</ytm-video-with-context-renderer>
+</lazy-list>
+</ytm-item-section-renderer>
+</lazy-list>
+</ytm-section-list-renderer>
+</div>
+</div>
+</ytm-single-column-browse-results-renderer>
+</ytm-browse>
+</ytm-app>
+<script src="lacuna_cache/exported_6ia0o0.js"></script>
+<script src="lacuna_cache/exported_ej2zkf.js"></script>
+<style name="www-roboto">
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            src: url(//fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxPKTU1Kg.ttf)format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 500;
+            src: url(//fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc9AMP6lQ.ttf)format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Roboto';
+            font-style: italic;
+            font-weight: 400;
+            src: url(//fonts.gstatic.com/s/roboto/v18/KFOkCnqEu92Fr1Mu51xIIzcXKMny.ttf)format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Roboto';
+            font-style: italic;
+            font-weight: 500;
+            src: url(//fonts.gstatic.com/s/roboto/v18/KFOjCnqEu92Fr1Mu51S7ACc6CsHYl4BO.ttf)format('truetype');
+        }
+    </style>
+<script src="lacuna_cache/exported_cfajdk.js"></script>
+<script name="mobile-c3/mobile-c3" src="yts/jsbin/mobile-c3-vfls9Fjnc/mobile-c3.js" type="text/javascript"></script>
+<link href="/yts/cssbin/mobile-c3-light-2x-vflb3GF7C.css" name="mobile-c3-light" rel="stylesheet"/>
+<!-- end of chunk 1 -->
+<div id="img-preload" style="display: none;">
+<img src="https://i.ytimg.com/vi/TkGmJXtV_X0/hq720.jpg?sqp=-oaymwEZCK4FEIIDSEbyq4qpAwsIARUAAIhCGAFwAQ==&amp;rs=AOn4CLAwew5WrCmoqmn01S420O3iF5Ahew"/>
+<img src="https://i.ytimg.com/vi/ttfQqnskTO8/hq720.jpg?sqp=-oaymwEZCK4FEIIDSEbyq4qpAwsIARUAAIhCGAFwAQ==&amp;rs=AOn4CLDHnQNMks2BNmgEHioct_1gXn9iLg"/>
+<img src="https://i.ytimg.com/vi/iUl9CuL_mno/hq720.jpg?sqp=-oaymwEZCK4FEIIDSEbyq4qpAwsIARUAAIhCGAFwAQ==&amp;rs=AOn4CLBxWVwl8CyU1XCe_PjyvYqXpj4odw"/>
+</div>
+<div id="initial-data">
+<!-- {"responseContext":{"serviceTrackingParams":[{"service":"CSI","params":[{"key":"yt_fn","value":"what_to_watch"},{"key":"GetBrowse_rid","value":"0xd7908664adad20f4"},{"key":"c","value":"MWEB"},{"key":"cver","value":"2.20191009.03.00"},{"key":"yt_li","value":"0"}]},{"service":"GFEEDBACK","params":[{"key":"browse_id","value":"FEwhat_to_watch"},{"key":"e","value":"23744176,23745074,23793834,23794626,23804281,23810785,23820769,23826780,23836427,23836965,23837041,23837742,23837772,23837993,23839360,23839911,23839911,23840217,23842630,23842882,23842986,23843288,23843533,23844301,23844532,23845645,23847143,23847474,23847944,23848217,23849617,23849888,23851013,23851876,24630162,9449243"},{"key":"logged_in","value":"0"}]},{"service":"ECATCHER","params":[{"key":"client.name","value":"MWEB"},{"key":"client.version","value":"2.20191009"},{"key":"innertube.build.changelist","value":"273830839"},{"key":"innertube.build.experiments.source_version","value":"273805335"},{"key":"innertube.build.label","value":"youtube.ytfe.innertube_20191008_4_RC2"},{"key":"innertube.build.timestamp","value":"1570659367"},{"key":"innertube.build.variants.checksum","value":"95c371fd97c38ebf2b6cc16012ab9406"},{"key":"innertube.run.job","value":"ytfe-innertube-replica-only.ytfe"}]}],"maxAgeSeconds":0,"webResponseContextExtensionData":{"webResponseContextPreloadData":{"preloadThumbnailUrls":["https://i.ytimg.com/vi/TkGmJXtV_X0/hq720.jpg?sqp=-oaymwEZCK4FEIIDSEbyq4qpAwsIARUAAIhCGAFwAQ==\u0026rs=AOn4CLAwew5WrCmoqmn01S420O3iF5Ahew","https://i.ytimg.com/vi/ttfQqnskTO8/hq720.jpg?sqp=-oaymwEZCK4FEIIDSEbyq4qpAwsIARUAAIhCGAFwAQ==\u0026rs=AOn4CLDHnQNMks2BNmgEHioct_1gXn9iLg","https://i.ytimg.com/vi/iUl9CuL_mno/hq720.jpg?sqp=-oaymwEZCK4FEIIDSEbyq4qpAwsIARUAAIhCGAFwAQ==\u0026rs=AOn4CLBxWVwl8CyU1XCe_PjyvYqXpj4odw"]},"ytConfigData":{"csn":"RwufXaqNGIeBx_APs5iLgAQ","visitorData":"Cgt1VWRxYWd4dTFZSSjHlvzsBQ%3D%3D","rootVisualElementType":6827}}},"contents":{"singleColumnBrowseResultsRenderer":{"tabs":[{"tabRenderer":{"endpoint":{"clickTrackingParams":"CAsQ8JMBGAAiEwjaseqOwZHlAhVGt3sKHT05DZ8=","commandMetadata":{"webCommandMetadata":{"url":"/","rootVe":3854}},"browseEndpoint":{"browseId":"FEwhat_to_watch"}},"title":"Home","selected":true,"content":{"sectionListRenderer":{"contents":[{"itemSectionRenderer":{"contents":[{"videoWithContextRenderer":{"headline":{"runs":[{"text":"Die zag ik niet aankomen!"}],"accessibility":{"accessibilityData":{"label":"Die zag ik niet aankomen! by leodehaastv 4 days ago 3 minutes, 5 seconds 23,106 views"}}},"thumbnail":{"thumbnails":[{"url":"https://i.ytimg.com/vi/TkGmJXtV_X0/hq720.jpg?sqp=-oaymwEZCK4FEIIDSEbyq4qpAwsIARUAAIhCGAFwAQ==\u0026rs=AOn4CLAwew5WrCmoqmn01S420O3iF5Ahew","width":2160,"height":1215}],"webThumbnailDetailsExtensionData":{"isPreloaded":true}},"shortBylineText":{"runs":[{"text":"leodehaastv","navigationEndpoint":{"clickTrackingParams":"CBgQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","commandMetadata":{"webCommandMetadata":{"url":"/user/leodehaastv","rootVe":3611}},"browseEndpoint":{"browseId":"UCCR1qHgTbKMTCUbmnYUvLoA","canonicalBaseUrl":"/user/leodehaastv"}}}]},"lengthText":{"runs":[{"text":"3:05"}],"accessibility":{"accessibilityData":{"label":"3 minutes, 5 seconds"}}},"shortViewCountText":{"runs":[{"text":"23K views"}]},"navigationEndpoint":{"clickTrackingParams":"CBgQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnzIKZy1oaWdoLXJlY1oPRkV3aGF0X3RvX3dhdGNo","commandMetadata":{"webCommandMetadata":{"url":"/watch?v=TkGmJXtV_X0","rootVe":3832}},"watchEndpoint":{"videoId":"TkGmJXtV_X0"}},"menu":{"menuRenderer":{"items":[{"menuNavigationItemRenderer":{"text":{"runs":[{"text":"Save to Watch later"}]},"navigationEndpoint":{"clickTrackingParams":"CBgQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","commandMetadata":{"webCommandMetadata":{"url":"https://accounts.google.com/ServiceLogin?service=youtube\u0026uilel=3\u0026passive=true\u0026continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Dm%26hl%3Den%26next%3D%252F\u0026hl=en","rootVe":83769}},"signInEndpoint":{"hack":true}},"trackingParams":"CBgQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw=="}}],"trackingParams":"CBgQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","accessibility":{"accessibilityData":{"label":"Action menu"}}}},"isWatched":false,"trackingParams":"CBgQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNn0D9-tfa18TpoE4=","videoId":"TkGmJXtV_X0","thumbnailOverlays":[{"thumbnailOverlayTimeStatusRenderer":{"text":{"runs":[{"text":"3:05"}],"accessibility":{"accessibilityData":{"label":"3 minutes, 5 seconds"}}},"style":"DEFAULT"}}],"channelThumbnail":{"channelThumbnailWithLinkRenderer":{"thumbnail":{"thumbnails":[{"url":"https://yt3.ggpht.com/-QNRZq4RQvRA/AAAAAAAAAAI/AAAAAAAAAAA/efVXVrw9ZwE/s68-c-k-no-mo-rj-c0xffffff/photo.jpg","width":68,"height":68}]},"navigationEndpoint":{"clickTrackingParams":"CBgQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","commandMetadata":{"webCommandMetadata":{"url":"/user/leodehaastv","rootVe":3611}},"browseEndpoint":{"browseId":"UCCR1qHgTbKMTCUbmnYUvLoA","canonicalBaseUrl":"/user/leodehaastv"}},"accessibility":{"accessibilityData":{"label":"Go to channel"}}}},"publishedTimeText":{"runs":[{"text":"4 days ago"}]},"accessibility":{"accessibilityData":{"label":"Die zag ik niet aankomen! - 3 minutes, 5 seconds - play video"}}}}],"trackingParams":"CBcQuy8YACITCNqx6o7BkeUCFUa3ewodPTkNnw=="}},{"itemSectionRenderer":{"contents":[{"videoWithContextRenderer":{"headline":{"runs":[{"text":"Floor Jansen - Winner | Beste Zangers 2019"}],"accessibility":{"accessibilityData":{"label":"Floor Jansen - Winner | Beste Zangers 2019 by AVROTROS 4 days ago 3 minutes, 27 seconds 464,969 views"}}},"thumbnail":{"thumbnails":[{"url":"https://i.ytimg.com/vi/ttfQqnskTO8/hq720.jpg?sqp=-oaymwEZCK4FEIIDSEbyq4qpAwsIARUAAIhCGAFwAQ==\u0026rs=AOn4CLDHnQNMks2BNmgEHioct_1gXn9iLg","width":2160,"height":1215}],"webThumbnailDetailsExtensionData":{"isPreloaded":true}},"shortBylineText":{"runs":[{"text":"AVROTROS","navigationEndpoint":{"clickTrackingParams":"CBYQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","commandMetadata":{"webCommandMetadata":{"url":"/user/avro","rootVe":3611}},"browseEndpoint":{"browseId":"UCCMfRxCMnIjOhkTezygDScQ","canonicalBaseUrl":"/user/avro"}}}]},"lengthText":{"runs":[{"text":"3:27"}],"accessibility":{"accessibilityData":{"label":"3 minutes, 27 seconds"}}},"shortViewCountText":{"runs":[{"text":"464K views"}]},"navigationEndpoint":{"clickTrackingParams":"CBYQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnzIKZy1oaWdoLXRydloPRkV3aGF0X3RvX3dhdGNo","commandMetadata":{"webCommandMetadata":{"url":"/watch?v=ttfQqnskTO8","rootVe":3832}},"watchEndpoint":{"videoId":"ttfQqnskTO8"}},"menu":{"menuRenderer":{"items":[{"menuNavigationItemRenderer":{"text":{"runs":[{"text":"Save to Watch later"}]},"navigationEndpoint":{"clickTrackingParams":"CBYQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","commandMetadata":{"webCommandMetadata":{"url":"https://accounts.google.com/ServiceLogin?service=youtube\u0026uilel=3\u0026passive=true\u0026continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Dm%26hl%3Den%26next%3D%252F\u0026hl=en","rootVe":83769}},"signInEndpoint":{"hack":true}},"trackingParams":"CBYQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw=="}}],"trackingParams":"CBYQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","accessibility":{"accessibilityData":{"label":"Action menu"}}}},"isWatched":false,"trackingParams":"CBYQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNn0DvmZHZp5X067YB","videoId":"ttfQqnskTO8","thumbnailOverlays":[{"thumbnailOverlayTimeStatusRenderer":{"text":{"runs":[{"text":"3:27"}],"accessibility":{"accessibilityData":{"label":"3 minutes, 27 seconds"}}},"style":"DEFAULT"}}],"channelThumbnail":{"channelThumbnailWithLinkRenderer":{"thumbnail":{"thumbnails":[{"url":"https://yt3.ggpht.com/-mXWOhhUxRtA/AAAAAAAAAAI/AAAAAAAAAAA/HndxiuyfTPQ/s68-c-k-no-mo-rj-c0xffffff/photo.jpg","width":68,"height":68}]},"navigationEndpoint":{"clickTrackingParams":"CBYQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","commandMetadata":{"webCommandMetadata":{"url":"/user/avro","rootVe":3611}},"browseEndpoint":{"browseId":"UCCMfRxCMnIjOhkTezygDScQ","canonicalBaseUrl":"/user/avro"}},"accessibility":{"accessibilityData":{"label":"Go to channel"}}}},"publishedTimeText":{"runs":[{"text":"4 days ago"}]},"accessibility":{"accessibilityData":{"label":"Floor Jansen - Winner | Beste Zangers 2019 - 3 minutes, 27 seconds - play video"}}}}],"trackingParams":"CBUQuy8YASITCNqx6o7BkeUCFUa3ewodPTkNnw=="}},{"itemSectionRenderer":{"contents":[{"videoWithContextRenderer":{"headline":{"runs":[{"text":"I will find you and I will kill you ðŸ˜Ž | The Graham Norton Show - BBC"}],"accessibility":{"accessibilityData":{"label":"I will find you and I will kill you ðŸ˜Ž | The Graham Norton Show - BBC by BBC 7 years ago 4 minutes, 21 seconds 2,894,658 views"}}},"thumbnail":{"thumbnails":[{"url":"https://i.ytimg.com/vi/iUl9CuL_mno/hq720.jpg?sqp=-oaymwEZCK4FEIIDSEbyq4qpAwsIARUAAIhCGAFwAQ==\u0026rs=AOn4CLBxWVwl8CyU1XCe_PjyvYqXpj4odw","width":2160,"height":1215}],"webThumbnailDetailsExtensionData":{"isPreloaded":true}},"shortBylineText":{"runs":[{"text":"BBC","navigationEndpoint":{"clickTrackingParams":"CBQQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","commandMetadata":{"webCommandMetadata":{"url":"/user/BBC","rootVe":3611}},"browseEndpoint":{"browseId":"UCCj956IF62FbT7Gouszaj9w","canonicalBaseUrl":"/user/BBC"}}}]},"lengthText":{"runs":[{"text":"4:21"}],"accessibility":{"accessibilityData":{"label":"4 minutes, 21 seconds"}}},"shortViewCountText":{"runs":[{"text":"2.8M views"}]},"navigationEndpoint":{"clickTrackingParams":"CBQQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnzIKZy1oaWdoLXJlY1oPRkV3aGF0X3RvX3dhdGNo","commandMetadata":{"webCommandMetadata":{"url":"/watch?v=iUl9CuL_mno","rootVe":3832}},"watchEndpoint":{"videoId":"iUl9CuL_mno"}},"menu":{"menuRenderer":{"items":[{"menuNavigationItemRenderer":{"text":{"runs":[{"text":"Save to Watch later"}]},"navigationEndpoint":{"clickTrackingParams":"CBQQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","commandMetadata":{"webCommandMetadata":{"url":"https://accounts.google.com/ServiceLogin?service=youtube\u0026uilel=3\u0026passive=true\u0026continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Dm%26hl%3Den%26next%3D%252F\u0026hl=en","rootVe":83769}},"signInEndpoint":{"hack":true}},"trackingParams":"CBQQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw=="}}],"trackingParams":"CBQQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","accessibility":{"accessibilityData":{"label":"Action menu"}}}},"isWatched":false,"trackingParams":"CBQQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNn0D6tP6XrqHfpIkB","videoId":"iUl9CuL_mno","thumbnailOverlays":[{"thumbnailOverlayTimeStatusRenderer":{"text":{"runs":[{"text":"4:21"}],"accessibility":{"accessibilityData":{"label":"4 minutes, 21 seconds"}}},"style":"DEFAULT"}}],"channelThumbnail":{"channelThumbnailWithLinkRenderer":{"thumbnail":{"thumbnails":[{"url":"https://yt3.ggpht.com/-8EjKDh376Uw/AAAAAAAAAAI/AAAAAAAAAAA/-91t-1CKRD0/s68-c-k-no-mo-rj-c0xffffff/photo.jpg","width":68,"height":68}]},"navigationEndpoint":{"clickTrackingParams":"CBQQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","commandMetadata":{"webCommandMetadata":{"url":"/user/BBC","rootVe":3611}},"browseEndpoint":{"browseId":"UCCj956IF62FbT7Gouszaj9w","canonicalBaseUrl":"/user/BBC"}},"accessibility":{"accessibilityData":{"label":"Go to channel"}}}},"publishedTimeText":{"runs":[{"text":"7 years ago"}]},"accessibility":{"accessibilityData":{"label":"I will find you and I will kill you ðŸ˜Ž | The Graham Norton Show - BBC - 4 minutes, 21 seconds - play video"}}}}],"trackingParams":"CBMQuy8YAiITCNqx6o7BkeUCFUa3ewodPTkNnw=="}},{"itemSectionRenderer":{"contents":[{"videoWithContextRenderer":{"headline":{"runs":[{"text":"Marco Borsato, Armin van Buuren, Davina Michelle - Hoe Het Danst [1 HOUR VERSION ]"}],"accessibility":{"accessibilityData":{"label":"Marco Borsato, Armin van Buuren, Davina Michelle - Hoe Het Danst [1 HOUR VERSION ] by Longer Song Versions 2 months ago 1 hour, 7 minutes 32,560 views"}}},"thumbnail":{"thumbnails":[{"url":"https://i.ytimg.com/vi_webp/1nKh0mPhc5g/default.webp","width":120,"height":90},{"url":"https://i.ytimg.com/vi_webp/1nKh0mPhc5g/mqdefault.webp","width":320,"height":180},{"url":"https://i.ytimg.com/vi_webp/1nKh0mPhc5g/hqdefault.webp","width":480,"height":360},{"url":"https://i.ytimg.com/vi_webp/1nKh0mPhc5g/sddefault.webp","width":640,"height":480}]},"shortBylineText":{"runs":[{"text":"Longer Song Versions","navigationEndpoint":{"clickTrackingParams":"CBIQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","commandMetadata":{"webCommandMetadata":{"url":"/channel/UCCOu0Q0L7jI8zgE_OcWmeXQ","rootVe":3611}},"browseEndpoint":{"browseId":"UCCOu0Q0L7jI8zgE_OcWmeXQ"}}}]},"lengthText":{"runs":[{"text":"1:07:17"}],"accessibility":{"accessibilityData":{"label":"1 hour, 7 minutes"}}},"shortViewCountText":{"runs":[{"text":"32K views"}]},"navigationEndpoint":{"clickTrackingParams":"CBIQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnzIKZy1oaWdoLXJlY1oPRkV3aGF0X3RvX3dhdGNo","commandMetadata":{"webCommandMetadata":{"url":"/watch?v=1nKh0mPhc5g","rootVe":3832}},"watchEndpoint":{"videoId":"1nKh0mPhc5g"}},"menu":{"menuRenderer":{"items":[{"menuNavigationItemRenderer":{"text":{"runs":[{"text":"Save to Watch later"}]},"navigationEndpoint":{"clickTrackingParams":"CBIQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","commandMetadata":{"webCommandMetadata":{"url":"https://accounts.google.com/ServiceLogin?service=youtube\u0026uilel=3\u0026passive=true\u0026continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Dm%26hl%3Den%26next%3D%252F\u0026hl=en","rootVe":83769}},"signInEndpoint":{"hack":true}},"trackingParams":"CBIQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw=="}}],"trackingParams":"CBIQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","accessibility":{"accessibilityData":{"label":"Action menu"}}}},"isWatched":false,"trackingParams":"CBIQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNn0CY54WfprqoudYB","videoId":"1nKh0mPhc5g","thumbnailOverlays":[{"thumbnailOverlayTimeStatusRenderer":{"text":{"runs":[{"text":"1:07:17"}],"accessibility":{"accessibilityData":{"label":"1 hour, 7 minutes"}}},"style":"DEFAULT"}}],"channelThumbnail":{"channelThumbnailWithLinkRenderer":{"thumbnail":{"thumbnails":[{"url":"https://yt3.ggpht.com/-AZFPjKwi9xg/AAAAAAAAAAI/AAAAAAAAAAA/sxLIq1vKfiA/s68-c-k-no-mo-rj-c0xffffff/photo.jpg","width":68,"height":68}]},"navigationEndpoint":{"clickTrackingParams":"CBIQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","commandMetadata":{"webCommandMetadata":{"url":"/channel/UCCOu0Q0L7jI8zgE_OcWmeXQ","rootVe":3611}},"browseEndpoint":{"browseId":"UCCOu0Q0L7jI8zgE_OcWmeXQ"}},"accessibility":{"accessibilityData":{"label":"Go to channel"}}}},"publishedTimeText":{"runs":[{"text":"2 months ago"}]},"accessibility":{"accessibilityData":{"label":"Marco Borsato, Armin van Buuren, Davina Michelle - Hoe Het Danst [1 HOUR VERSION ] - 1 hour, 7 minutes - play video"}}}}],"trackingParams":"CBEQuy8YAyITCNqx6o7BkeUCFUa3ewodPTkNnw=="}},{"itemSectionRenderer":{"contents":[{"videoWithContextRenderer":{"headline":{"runs":[{"text":"Messi, SuÃ¡rez and PiquÃ© among those in training during international break"}],"accessibility":{"accessibilityData":{"label":"Messi, SuÃ¡rez and PiquÃ© among those in training during international break by FC Barcelona 1 day ago 5 minutes, 11 seconds 361,977 views"}}},"thumbnail":{"thumbnails":[{"url":"https://i.ytimg.com/vi_webp/ps8JzY3ALKU/default.webp?v=5d9ca308","width":120,"height":90},{"url":"https://i.ytimg.com/vi_webp/ps8JzY3ALKU/mqdefault.webp?v=5d9ca308","width":320,"height":180},{"url":"https://i.ytimg.com/vi_webp/ps8JzY3ALKU/hqdefault.webp?v=5d9ca308","width":480,"height":360},{"url":"https://i.ytimg.com/vi_webp/ps8JzY3ALKU/sddefault.webp?v=5d9ca308","width":640,"height":480},{"url":"https://i.ytimg.com/vi/ps8JzY3ALKU/hq720.jpg?sqp=-oaymwEZCK4FEIIDSEbyq4qpAwsIARUAAIhCGAFwAQ==\u0026rs=AOn4CLD77sWIGlyIeiOexSGgpSGkz_eMSw","width":686,"height":386}]},"shortBylineText":{"runs":[{"text":"FC Barcelona","navigationEndpoint":{"clickTrackingParams":"CBAQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","commandMetadata":{"webCommandMetadata":{"url":"/user/fcbarcelona","rootVe":3611}},"browseEndpoint":{"browseId":"UC14UlmYlSNiQCBe9Eookf_A","canonicalBaseUrl":"/user/fcbarcelona"}}}]},"lengthText":{"runs":[{"text":"5:11"}],"accessibility":{"accessibilityData":{"label":"5 minutes, 11 seconds"}}},"shortViewCountText":{"runs":[{"text":"361K views"}]},"navigationEndpoint":{"clickTrackingParams":"CBAQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnzIKZy1oaWdoLXJlY1oPRkV3aGF0X3RvX3dhdGNo","commandMetadata":{"webCommandMetadata":{"url":"/watch?v=ps8JzY3ALKU","rootVe":3832}},"watchEndpoint":{"videoId":"ps8JzY3ALKU"}},"menu":{"menuRenderer":{"items":[{"menuNavigationItemRenderer":{"text":{"runs":[{"text":"Save to Watch later"}]},"navigationEndpoint":{"clickTrackingParams":"CBAQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","commandMetadata":{"webCommandMetadata":{"url":"https://accounts.google.com/ServiceLogin?service=youtube\u0026uilel=3\u0026passive=true\u0026continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Dm%26hl%3Den%26next%3D%252F\u0026hl=en","rootVe":83769}},"signInEndpoint":{"hack":true}},"trackingParams":"CBAQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw=="}}],"trackingParams":"CBAQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","accessibility":{"accessibilityData":{"label":"Action menu"}}}},"isWatched":false,"trackingParams":"CBAQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNn0Cl2YDu2LnC56YB","videoId":"ps8JzY3ALKU","thumbnailOverlays":[{"thumbnailOverlayTimeStatusRenderer":{"text":{"runs":[{"text":"5:11"}],"accessibility":{"accessibilityData":{"label":"5 minutes, 11 seconds"}}},"style":"DEFAULT"}}],"channelThumbnail":{"channelThumbnailWithLinkRenderer":{"thumbnail":{"thumbnails":[{"url":"https://yt3.ggpht.com/-cbuwcRBtVFE/AAAAAAAAAAI/AAAAAAAAAAA/Cd4EmB0AO6E/s68-c-k-no-mo-rj-c0xffffff/photo.jpg","width":68,"height":68}]},"navigationEndpoint":{"clickTrackingParams":"CBAQ_FoYACITCNqx6o7BkeUCFUa3ewodPTkNnw==","commandMetadata":{"webCommandMetadata":{"url":"/user/fcbarcelona","rootVe":3611}},"browseEndpoint":{"browseId":"UC14UlmYlSNiQCBe9Eookf_A","canonicalBaseUrl":"/user/fcbarcelona"}},"accessibility":{"accessibilityData":{"label":"Go to channel"}}}},"publishedTimeText":{"runs":[{"text":"1 day ago"}]},"accessibility":{"accessibilityData":{"label":"Messi, SuÃ¡rez and PiquÃ© among those in training during international break - 5 minutes, 11 seconds - play video"}}}}],"trackingParams":"CA8Quy8YBCITCNqx6o7BkeUCFUa3ewodPTkNnw=="}}],"continuations":[{"reloadContinuationData":{"continuation":"4qmFsgIREg9GRXdoYXRfdG9fd2F0Y2g%3D","clickTrackingParams":"CA4QxqYCIhMI2rHqjsGR5QIVRrd7Ch09OQ2f"}},{"nextContinuationData":{"continuation":"4qmFsgKgARIPRkV3aGF0X3RvX3dhdGNoGowBQ0FWNllFTnBORUZCUjFaMVFVRkdUMVJCUVVKVWEzZEJRVkZDUjFKWVpHOVpXRkptWkVjNVptUXlSakJaTW1kQlFWRkJRVUZSUlVOQlFVRkNRVUZGUVVGQlJVSkZRVUZaY1hZdFNXbzRSMUkxVVVsNVEzZHBiREpaUkhVeVRHNUROVFpaUWclM0QlM0Q%3D","clickTrackingParams":"CA0QybcCIhMI2rHqjsGR5QIVRrd7Ch09OQ2f"}}],"trackingParams":"CAwQui8iEwjaseqOwZHlAhVGt3sKHT05DZ8="}},"icon":{"iconType":"TAB_HOME"},"tabIdentifier":"FEwhat_to_watch","accessibility":{"accessibilityData":{"label":"Home"}},"trackingParams":"CAsQ8JMBGAAiEwjaseqOwZHlAhVGt3sKHT05DZ8="}},{"tabRenderer":{"endpoint":{"clickTrackingParams":"CAgQ8JMBGAEiEwjaseqOwZHlAhVGt3sKHT05DZ8=","commandMetadata":{"webCommandMetadata":{"url":"/feed/trending","rootVe":6827}},"browseEndpoint":{"browseId":"FEtrending"}},"title":"Trending","selected":false,"content":{"sectionListRenderer":{"continuations":[{"reloadContinuationData":{"continuation":"4qmFsgIMEgpGRXRyZW5kaW5n","clickTrackingParams":"CAoQxqYCIhMI2rHqjsGR5QIVRrd7Ch09OQ2f"}}],"trackingParams":"CAkQui8iEwjaseqOwZHlAhVGt3sKHT05DZ8="}},"icon":{"iconType":"TAB_TRENDING"},"tabIdentifier":"FEtrending","accessibility":{"accessibilityData":{"label":"Trending"}},"trackingParams":"CAgQ8JMBGAEiEwjaseqOwZHlAhVGt3sKHT05DZ8="}},{"tabRenderer":{"endpoint":{"clickTrackingParams":"CAQQ8JMBGAIiEwjaseqOwZHlAhVGt3sKHT05DZ8=","commandMetadata":{"webCommandMetadata":{"url":"/feed/library","rootVe":6827}},"browseEndpoint":{"browseId":"FElibrary"}},"title":"Library","selected":false,"content":{"sectionListRenderer":{"continuations":[{"reloadContinuationData":{"continuation":"4qmFsgILEglGRWxpYnJhcnk%3D","clickTrackingParams":"CAcQxqYCIhMI2rHqjsGR5QIVRrd7Ch09OQ2f"}}],"trackingParams":"CAYQui8iEwjaseqOwZHlAhVGt3sKHT05DZ8="}},"icon":{"iconType":"TAB_ACCOUNT"},"header":{"signInPromoWithBackgroundRenderer":{"trackingParams":"CAUQ5lUiEwjaseqOwZHlAhVGt3sKHT05DZ8=","navigationEndpoint":{"clickTrackingParams":"CAUQ5lUiEwjaseqOwZHlAhVGt3sKHT05DZ8=","commandMetadata":{"webCommandMetadata":{"url":"https://accounts.google.com/ServiceLogin?service=youtube\u0026uilel=3\u0026passive=true\u0026continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Dm%26hl%3Den%26next%3D%252F\u0026hl=en","rootVe":83769}},"signInEndpoint":{"nextEndpoint":{"clickTrackingParams":"CAUQ5lUiEwjaseqOwZHlAhVGt3sKHT05DZ8=","commandMetadata":{"webCommandMetadata":{"url":"/","rootVe":3854}},"browseEndpoint":{"browseId":"FEwhat_to_watch"}}}},"promoHeadline":{"runs":[{"text":"You're not signed in"}]},"promoImage":{"thumbnails":[{"url":"https://s.ytimg.com/yts/mobile/img/sign_in_promo-vfluaJRxi.png","width":600,"height":353}]},"promoSubtitle":{"runs":[{"text":"Sign in now to upload, save, and comment on videos."}]}}},"tabIdentifier":"FElibrary","accessibility":{"accessibilityData":{"label":"Library"}},"trackingParams":"CAQQ8JMBGAIiEwjaseqOwZHlAhVGt3sKHT05DZ8="}}],"hideTabBar":true,"disableTabSwiping":true}},"header":{"feedTabbedHeaderRenderer":{"title":{"runs":[{"text":"Home"}]}}},"trackingParams":"CAAQhGciEwjaseqOwZHlAhVGt3sKHT05DZ8=","overlay":{"consentBumpRenderer":{"securityIcon":{"iconType":"CONSENT_SHIELD"},"alertMessage":{"runs":[{"text":"A privacy reminder from YouTube, a Google company"}]},"remindMeLaterButton":{"buttonRenderer":{"style":"STYLE_DEFAULT","size":"SIZE_DEFAULT","isDisabled":false,"accessibility":{"label":"Show me the privacy reminder later"}}},"reviewButton":{"buttonRenderer":{"style":"STYLE_PRIMARY","size":"SIZE_DEFAULT","isDisabled":false,"text":{"runs":[{"text":"Review"}]},"navigationEndpoint":{"commandMetadata":{"webCommandMetadata":{"url":"https://consent.google.com/?l=0\u0026m=1\u0026if=0\u0026gl=NL\u0026wp=48\u0026hl=en\u0026pc=yt\u0026origin=https%3A%2F%2Fwww.youtube.com\u0026continue=https%3A%2F%2Fm.youtube.com%2F","rootVe":83769}},"urlEndpoint":{"url":"https://consent.google.com/?l=0\u0026m=1\u0026if=0\u0026gl=NL\u0026wp=48\u0026hl=en\u0026pc=yt\u0026origin=https%3A%2F%2Fwww.youtube.com\u0026continue=https%3A%2F%2Fm.youtube.com%2F"}},"accessibility":{"label":"Review privacy reminder now"}}},"expressFlowButton":{"buttonRenderer":{"style":"STYLE_BLUE_TEXT","size":"SIZE_DEFAULT","isDisabled":false,"text":{"runs":[{"text":"Already agreed"}]},"accessibility":{"label":"Already agreed to the privacy reminder"}}},"expressFlowUrl":"https://consent.youtube.com/setx?m=1\u0026xt=ADw3F8ihlfZ4DVblPSM4cwD2Kb4-U5OGBg%3A1570704199423\u0026x=1\u0026gl=NL\u0026wp=48\u0026hl=en\u0026pc=yt\u0026origin=https%3A%2F%2Fm.youtube.com\u0026continue=https%3A%2F%2Fm.youtube.com%2F","onExpressFlowSuccess":{"commandMetadata":{"webCommandMetadata":{"url":"/service_ajax","sendPost":true}},"signalServiceEndpoint":{"signal":"CLIENT_SIGNAL","actions":[{"openPopupAction":{"popup":{"notificationActionRenderer":{"responseText":{"runs":[{"text":"Thanks. To see your options, go to g.co/consent."}]}}},"popupType":"TOAST"}}]}}}},"adSafetyReason":{}} -->
+</div>
+<script src="lacuna_cache/exported_vjsvb1.js"></script>
+<div id="initial-guide-data">
+<!-- {"responseContext":{"serviceTrackingParams":[{"service":"CSI","params":[{"key":"GetGuide_rid","value":"0xd7908664adad20f4"},{"key":"c","value":"MWEB"},{"key":"cver","value":"2.20191009.03.00"},{"key":"yt_li","value":"0"}]},{"service":"GFEEDBACK","params":[{"key":"e","value":"23744176,23745074,23793834,23794626,23804281,23810785,23820769,23826780,23836427,23836965,23837041,23837742,23837772,23837993,23839360,23839911,23839911,23840217,23842630,23842882,23842986,23843288,23843533,23844301,23844532,23845645,23847143,23847474,23847944,23848217,23849617,23849888,23851013,23851876,24630162,9449243"},{"key":"logged_in","value":"0"}]},{"service":"ECATCHER","params":[{"key":"client.name","value":"MWEB"},{"key":"client.version","value":"2.20191009"},{"key":"innertube.build.changelist","value":"273830839"},{"key":"innertube.build.experiments.source_version","value":"273805335"},{"key":"innertube.build.label","value":"youtube.ytfe.innertube_20191008_4_RC2"},{"key":"innertube.build.timestamp","value":"1570659367"},{"key":"innertube.build.variants.checksum","value":"95c371fd97c38ebf2b6cc16012ab9406"},{"key":"innertube.run.job","value":"ytfe-innertube-replica-only.ytfe"}]}],"maxAgeSeconds":3600,"webResponseContextExtensionData":{"ytConfigData":{"csn":"RwufXaqNGIeBx_APs5iLgAQ","visitorData":"Cgt1VWRxYWd4dTFZSSjHlvzsBQ%3D%3D","rootVisualElementType":6827}}},"items":[{"pivotBarRenderer":{"items":[{"pivotBarItemRenderer":{"pivotIdentifier":"FEwhat_to_watch","navigationEndpoint":{"clickTrackingParams":"CAkQ2qgBGAAiEwiWt-qOwZHlAhWhwhEIHbaICm4=","commandMetadata":{"webCommandMetadata":{"url":"/","rootVe":3854}},"browseEndpoint":{"browseId":"FEwhat_to_watch"}},"title":{"runs":[{"text":"Home"}]},"accessibility":{"accessibilityData":{"label":"Home"}},"icon":{"iconType":"TAB_HOME"},"trackingParams":"CAkQ2qgBGAAiEwiWt-qOwZHlAhWhwhEIHbaICm4=","targetId":"pivot-w2w"}},{"pivotBarItemRenderer":{"pivotIdentifier":"FEtrending","navigationEndpoint":{"clickTrackingParams":"CAgQ2qgBGAEiEwiWt-qOwZHlAhWhwhEIHbaICm4=","commandMetadata":{"webCommandMetadata":{"url":"/feed/trending","rootVe":6827}},"browseEndpoint":{"browseId":"FEtrending"}},"title":{"runs":[{"text":"Trending"}]},"accessibility":{"accessibilityData":{"label":"Trending"}},"icon":{"iconType":"TAB_TRENDING"},"trackingParams":"CAgQ2qgBGAEiEwiWt-qOwZHlAhWhwhEIHbaICm4=","targetId":"pivot-trending"}},{"pivotBarItemRenderer":{"pivotIdentifier":"FElibrary","navigationEndpoint":{"clickTrackingParams":"CAcQ2qgBGAIiEwiWt-qOwZHlAhWhwhEIHbaICm4=","commandMetadata":{"webCommandMetadata":{"url":"/feed/library","rootVe":6827}},"browseEndpoint":{"browseId":"FElibrary"}},"title":{"runs":[{"text":"Library"}]},"accessibility":{"accessibilityData":{"label":"Library"}},"icon":{"iconType":"PIVOT_LIBRARY"},"trackingParams":"CAcQ2qgBGAIiEwiWt-qOwZHlAhWhwhEIHbaICm4=","targetId":"pivot-library"}}],"trackingParams":"CAYQ2agBGAAiEwiWt-qOwZHlAhWhwhEIHbaICm4="}},{"mobileTopbarRenderer":{"placeholderText":{"runs":[{"text":"Search"}]},"trackingParams":"CAEQwbIBGAEiEwiWt-qOwZHlAhWhwhEIHbaICm4=","buttons":[{"topbarMenuButtonRenderer":{"icon":{"iconType":"ACCOUNT_CIRCLE"},"menuRenderer":{"multiPageMenuRenderer":{"sections":[{"multiPageMenuSectionRenderer":{"items":[{"compactLinkRenderer":{"icon":{"iconType":"SWITCH_ACCOUNTS"},"title":{"runs":[{"text":"Sign in"}]},"navigationEndpoint":{"clickTrackingParams":"CAUQp0wYACITCJa36o7BkeUCFaHCEQgdtogKbg==","commandMetadata":{"webCommandMetadata":{"url":"https://accounts.google.com/ServiceLogin?service=youtube\u0026uilel=3\u0026passive=true\u0026continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Dm%26hl%3Den%26next%3D%252F\u0026hl=en","rootVe":83769}},"signInEndpoint":{"hack":true}},"trackingParams":"CAUQp0wYACITCJa36o7BkeUCFaHCEQgdtogKbg=="}}],"trackingParams":"CAQQ968BGAAiEwiWt-qOwZHlAhWhwhEIHbaICm4="}}],"trackingParams":"CAMQ_6sBIhMIlrfqjsGR5QIVocIRCB22iApu","footer":{"privacyTosFooterRenderer":{"privacyTitle":{"runs":[{"text":"Privacy Policy"}]},"tosTitle":{"runs":[{"text":"Terms of Service"}]},"footer":{"lugashFooterRenderer":{"title":{"runs":[{"text":"YouTube, a Google company"}]}}},"privacyCommand":{"clickTrackingParams":"CAMQ_6sBIhMIlrfqjsGR5QIVocIRCB22iApu","commandMetadata":{"webCommandMetadata":{"url":"https://policies.google.com/privacy?hl=en","rootVe":83769}},"urlEndpoint":{"url":"https://policies.google.com/privacy?hl=en","target":"TARGET_NEW_WINDOW"}},"tosCommand":{"clickTrackingParams":"CAMQ_6sBIhMIlrfqjsGR5QIVocIRCB22iApu","commandMetadata":{"webCommandMetadata":{"url":"https://www.youtube.com/t/terms?chromeless=1\u0026gl=NL","rootVe":83769}},"urlEndpoint":{"url":"https://www.youtube.com/t/terms?chromeless=1\u0026gl=NL"}}}},"title":{"simpleMenuHeaderRenderer":{"title":{"runs":[{"text":"Account"}]}}}}},"trackingParams":"CAIQ_qsBGAAiEwiWt-qOwZHlAhWhwhEIHbaICm4="}}]}}],"trackingParams":"CAAQumkiEwiWt-qOwZHlAhWhwhEIHbaICm4="} -->
+</div>
+<script src="lacuna_cache/exported_kkla3h.js"></script>
+<script src="lacuna_cache/exported_eksyq7.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html data-framework="enyo" lang="en">
+<head><script src="/node_modules/perfume.js/dist/perfume.umd.min.js"></script><script>function xml_http_post(url, data, callback) {var req = new XMLHttpRequest(); req.open("POST", url, true); req.send(data);} setTimeout(function(){ if(LoadingEnd == 0){LoadingEnd = window.performance.timing.loadEventEnd; LoadingTime = LoadingEnd - LoadingStart;}  objectToSend="{ 'WebName':"+window.location.href+", 'Load':"+LoadingTime+", 'Start':"+LoadingStart+",'End':"+LoadingEnd+", 'PerfumeResult':"+JSON.stringify(perfumeResults)+"}"; xml_http_post("http://192.168.1.57:8081/",objectToSend,null); }, 18000); perfumeResults = []; const perfume = new Perfume({  analyticsTracker: (options) => {    const { metricName, data, eventProperties, navigatorInformation } = options;     perfumeResults.push(options); } }); function load_log() {LoadingTime = (window.performance.timing.loadEventEnd-window.performance.timing.requestStart); LoadingStart = window.performance.timing.requestStart; LoadingEnd= window.performance.timing.loadEventEnd}; window.addEventListener ?window.addEventListener("load",load_log, true) : window.attachEvent && window.attachEvent("onload", load_log);</script>
+<meta charset="utf-8"/>
+<title>Enyo &amp; Backbone.js • TodoMVC</title>
+<link href="node_modules/todomvc-common/base.css" rel="stylesheet"/>
+<link href="node_modules/todomvc-app-css/index.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="enyo-unselectable" id="todo-container">
+<!-- Enyo comes with a build and deploy process that will minify and concatenate your files into 2 js files. One for enyo, and one for app code. For the purpose of demonstration, I used the debug loading library to handle the dependency management. The loader nagivates directories for package.js files and injects files they list into the DOM. -->
+<script src="node_modules/todomvc-common/base.js"></script>
+<script src="enyo/enyo.js"></script>
+<script src="js/package.js"></script>
+</div>
+</body>
+</html>

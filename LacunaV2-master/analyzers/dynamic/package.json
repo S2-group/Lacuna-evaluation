@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "command-line-args": "4.*",
+    "esprima": "3.*",
+    "phantomjs-prebuilt-that-works": "^3.0.1",
+    "selenium-webdriver": "^3.6.0"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "finalhandler": "^1.1.1",
+    "puppeteer": "^1.13.0",
+    "serve-static": "^1.13.2"
+  }
+}

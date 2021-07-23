@@ -1,0 +1,2 @@
+ (function(){ window.addEventListener('load', function() { var s, t; s = document.createElement("script"); s.type = "text/javascript"; s.src = "https://www.paypalobjects.com/digitalassets/c/website/marketing/global/kui/js/opinionLab-2.1.0.js";
+            t = document.getElementsByTagName("body")[0]; t.appendChild(s); }); })();

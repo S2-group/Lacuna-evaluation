@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html data-framework="polymer" lang="en">
+<head><script src="/node_modules/perfume.js/dist/perfume.umd.min.js"></script><script>function xml_http_post(url, data, callback) {var req = new XMLHttpRequest(); req.open("POST", url, true); req.send(data);} setTimeout(function(){ if(LoadingEnd == 0){LoadingEnd = window.performance.timing.loadEventEnd; LoadingTime = LoadingEnd - LoadingStart;}  objectToSend="{ 'WebName':"+window.location.href+", 'Load':"+LoadingTime+", 'Start':"+LoadingStart+",'End':"+LoadingEnd+", 'PerfumeResult':"+JSON.stringify(perfumeResults)+"}"; xml_http_post("http://192.168.1.57:8081/",objectToSend,null); }, 18000); perfumeResults = []; const perfume = new Perfume({  analyticsTracker: (options) => {    const { metricName, data, eventProperties, navigatorInformation } = options;     perfumeResults.push(options); } }); function load_log() {LoadingTime = (window.performance.timing.loadEventEnd-window.performance.timing.requestStart); LoadingStart = window.performance.timing.requestStart; LoadingEnd= window.performance.timing.loadEventEnd}; window.addEventListener ?window.addEventListener("load",load_log, true) : window.attachEvent && window.attachEvent("onload", load_log);</script>
+<meta charset="utf-8"/>
+<title>Polymer • TodoMVC</title>
+<link href="bower_components/todomvc-common/base.css" rel="stylesheet"/>
+<link href="bower_components/todomvc-app-css/index.css" rel="stylesheet"/>
+<link async="" href="elements/elements.build.html" rel="import"/>
+<!-- <link rel="import" href="elements/elements.html"> for dev -->
+</head>
+<body>
+<div class="todoapp">
+<header>
+<h1>todos</h1>
+</header>
+<template is="dom-bind">
+<td-model id="model" items="{{todos}}"></td-model>
+<td-todos items="{{todos}}" model-id="model"></td-todos>
+</template>
+</div>
+<footer class="info">
+<p>Double-click to edit a todo</p>
+<p>Created by <a href="https://www.polymer-project.org/1.0/">The Polymer Authors</a></p>
+<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+</footer>
+<script async="" src="bower_components/todomvc-common/base.js"></script>
+<script src="lacuna_cache/exported_c438m0.js"></script>
+</body>
+</html>

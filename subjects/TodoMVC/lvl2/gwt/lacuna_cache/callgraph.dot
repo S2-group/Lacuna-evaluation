@@ -1,0 +1,25 @@
+digraph lacunaCG {
+ "rootNode@node_modules/todomvc-common/base.js:," -> "FunctionExpression@node_modules/todomvc-common/base.js:16,7086" [label="dynamic" ];
+ "rootNode@node_modules/todomvc-common/base.js:," -> "FunctionExpression@node_modules/todomvc-common/base.js:149,3349" [label="dynamic" ];
+ "rootNode@node_modules/todomvc-common/base.js:," -> "FunctionDeclaration@node_modules/todomvc-common/base.js:3665,3830" [label="dynamic" ];
+ "rootNode@node_modules/todomvc-common/base.js:," -> "FunctionDeclaration@node_modules/todomvc-common/base.js:3949,4324" [label="dynamic" ];
+ "rootNode@node_modules/todomvc-common/base.js:," -> "FunctionDeclaration@node_modules/todomvc-common/base.js:3833,3946" [label="dynamic" ];
+ "rootNode@node_modules/todomvc-common/base.js:," -> "FunctionExpression@node_modules/todomvc-common/base.js:4225,4320" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionDeclaration@gwttodo/gwttodo.nocache.js:0,5398" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionDeclaration@gwttodo/gwttodo.nocache.js:1929,2122" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionDeclaration@gwttodo/gwttodo.nocache.js:3285,3752" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionDeclaration@gwttodo/gwttodo.nocache.js:2249,3284" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionDeclaration@gwttodo/gwttodo.nocache.js:2535,2590" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionDeclaration@gwttodo/gwttodo.nocache.js:3753,3800" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionDeclaration@gwttodo/gwttodo.nocache.js:2591,2723" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionDeclaration@gwttodo/gwttodo.nocache.js:2262,2431" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionDeclaration@gwttodo/gwttodo.nocache.js:2432,2534" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionDeclaration@gwttodo/gwttodo.nocache.js:3801,3893" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionDeclaration@gwttodo/gwttodo.nocache.js:3894,4009" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionExpression@gwttodo/gwttodo.nocache.js:4016,4456" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionExpression@gwttodo/gwttodo.nocache.js:4131,4167" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionExpression@gwttodo/gwttodo.nocache.js:4525,4571" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionDeclaration@gwttodo/gwttodo.nocache.js:2123,2248" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionExpression@gwttodo/gwttodo.nocache.js:5037,5052" [label="dynamic" ];
+ "rootNode@gwttodo/gwttodo.nocache.js:," -> "FunctionDeclaration@gwttodo/gwttodo.nocache.js:4875,4991" [label="dynamic" ];
+ }

@@ -1,0 +1,11 @@
+digraph lacunaCG {
+ "rootNode@node_modules/todomvc-common/base.js:," -> "FunctionExpression@node_modules/todomvc-common/base.js:16,7086" [label="dynamic" ];
+ "rootNode@node_modules/todomvc-common/base.js:," -> "FunctionExpression@node_modules/todomvc-common/base.js:149,3349" [label="dynamic" ];
+ "rootNode@node_modules/todomvc-common/base.js:," -> "FunctionDeclaration@node_modules/todomvc-common/base.js:3665,3830" [label="dynamic" ];
+ "rootNode@node_modules/todomvc-common/base.js:," -> "FunctionDeclaration@node_modules/todomvc-common/base.js:3949,4324" [label="dynamic" ];
+ "rootNode@node_modules/todomvc-common/base.js:," -> "FunctionDeclaration@node_modules/todomvc-common/base.js:3833,3946" [label="dynamic" ];
+ "rootNode@node_modules/todomvc-common/base.js:," -> "FunctionExpression@node_modules/todomvc-common/base.js:4225,4320" [label="dynamic" ];
+ "rootNode@enyo/enyo.js:," -> "FunctionExpression@enyo/enyo.js:1,1257" [label="dynamic" ];
+ "rootNode@enyo/enyo.js:," -> "FunctionExpression@enyo/enyo.js:173,551" [label="dynamic" ];
+ "rootNode@enyo/enyo.js:," -> "FunctionExpression@enyo/enyo.js:1044,1158" [label="dynamic" ];
+ }

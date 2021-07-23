@@ -1,0 +1,7 @@
+# Google Closure Compiler
+
+This analyzer is built on the Google Closure Compiler
+https://github.com/google/closure-compiler.git
+
+More specifically commit: 'f478995' was used.
+With some changes (to export the callgraph) visible in: closure_compiler.diff

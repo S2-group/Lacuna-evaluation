@@ -1,0 +1,3 @@
+[submodule "analyzers/WALA"]
+	path = analyzers/WALA
+	url = https://github.com/Kishanjay/WALA-JSONCallGraph.git

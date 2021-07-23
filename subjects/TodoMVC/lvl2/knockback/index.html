@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html data-framework="knockback" lang="en">
+<head><script src="/node_modules/perfume.js/dist/perfume.umd.min.js"></script><script>function xml_http_post(url, data, callback) {var req = new XMLHttpRequest(); req.open("POST", url, true); req.send(data);} setTimeout(function(){ if(LoadingEnd == 0){LoadingEnd = window.performance.timing.loadEventEnd; LoadingTime = LoadingEnd - LoadingStart;}  objectToSend="{ 'WebName':"+window.location.href+", 'Load':"+LoadingTime+", 'Start':"+LoadingStart+",'End':"+LoadingEnd+", 'PerfumeResult':"+JSON.stringify(perfumeResults)+"}"; xml_http_post("http://192.168.1.57:8081/",objectToSend,null); }, 18000); perfumeResults = []; const perfume = new Perfume({  analyticsTracker: (options) => {    const { metricName, data, eventProperties, navigatorInformation } = options;     perfumeResults.push(options); } }); function load_log() {LoadingTime = (window.performance.timing.loadEventEnd-window.performance.timing.requestStart); LoadingStart = window.performance.timing.requestStart; LoadingEnd= window.performance.timing.loadEventEnd}; window.addEventListener ?window.addEventListener("load",load_log, true) : window.attachEvent && window.attachEvent("onload", load_log);</script>
+<meta charset="utf-8"/>
+<title>Knockback.js • TodoMVC</title>
+<link href="node_modules/todomvc-common/base.css" rel="stylesheet"/>
+<link href="node_modules/todomvc-app-css/index.css" rel="stylesheet"/>
+</head>
+<body>
+<section class="todoapp" kb-inject="AppViewModel">
+<header class="header">
+<h1>todos</h1>
+<input autofocus="" class="new-todo" data-bind="value: title, valueUpdate: 'afterkeydown', event: {keyup: onAddTodo}" placeholder="What needs to be done?" type="text"/>
+</header>
+<section class="main" data-bind="visible: todoStats().tasksExist">
+<input class="toggle-all" data-bind="checked: toggleCompleted" id="toggle-all" type="checkbox"/>
+<label for="toggle-all">Mark all as complete</label>
+<ul class="todo-list" data-bind="foreach: todos">
+<li data-bind="css: {completed: completed, editing: editing}">
+<div class="view" data-bind="event: {dblclick: onCheckEditBegin}">
+<input checked="" class="toggle" data-bind="checked: completed" type="checkbox"/>
+<label data-bind="text: title"></label>
+<button class="destroy" data-bind="click: onDestroy"></button>
+</div>
+<input class="edit" data-bind="value: editTitle, event: {blur: onCheckEditEnd, keyup: onCheckEditEnd}" type="text"/>
+</li>
+</ul>
+</section>
+<footer class="footer" data-bind="visible: todoStats().tasksExist">
+<span class="todo-count">
+<strong data-bind="text: todoStats().remainingCount">0</strong>
+<span data-bind="text: getLabel(todoStats().remainingCount)"></span> left
+				</span>
+<ul class="filters">
+<li>
+<a data-bind="css: {selected: filterMode()==''}" href="#/">All</a>
+</li>
+<li>
+<a data-bind="css: {selected: filterMode()=='active'}" href="#/active">Active</a>
+</li>
+<li>
+<a data-bind="css: {selected: filterMode()=='completed'}" href="#/completed">Completed</a>
+</li>
+</ul>
+<button class="clear-completed" data-bind="visible: todoStats().completedCount, click: onClearCompleted">Clear completed</button>
+</footer>
+</section>
+<footer class="info">
+<p>Double-click to edit a todo</p>
+<p>Created by <a href="https://github.com/kmalakoff">Kevin Malakoff</a>. <br/>
+			Please try out the <a href="http://kmalakoff.github.com/knockback-todos-app/">enhanced version</a> <br/>
+			with localization, priority colors, and lazy loading <br/>
+			to see just how dynamic <a href="https://github.com/kmalakoff/knockback">Knockback.js</a> can be!</p>
+<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+</footer>
+<!-- App Dependencies -->
+<script src="node_modules/todomvc-common/base.js"></script>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/underscore/underscore.js"></script>
+<script src="node_modules/backbone/backbone.js"></script>
+<script src="node_modules/knockout/build/output/knockout-latest.debug.js"></script>
+<script src="node_modules/knockback/knockback.js"></script>
+<script src="node_modules/backbone.localstorage/backbone.localStorage.js"></script>
+<!-- App and Components -->
+<script src="js/models/todo.js"></script>
+<script src="js/collections/todos.js"></script>
+<script src="js/viewmodels/todo.js"></script>
+<script src="js/viewmodels/app.js"></script>
+</body>
+</html>

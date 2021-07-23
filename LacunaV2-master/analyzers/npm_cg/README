@@ -1,0 +1,10 @@
+This analyzer comes with a few limitations
+Only works for a single JS file.
+Is only able to identify functions by their name
+
+Doesn't consider variable functions.
+Doesn't consider arrowFunctions.
+
+Source: https://github.com/gunar/callgraph
+
+the minor changes required for it to work are stored in callgraph.diff

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html data-framework="vue">
+<head><script src="/node_modules/perfume.js/dist/perfume.umd.min.js"></script><script>function xml_http_post(url, data, callback) {var req = new XMLHttpRequest(); req.open("POST", url, true); req.send(data);} setTimeout(function(){ if(LoadingEnd == 0){LoadingEnd = window.performance.timing.loadEventEnd; LoadingTime = LoadingEnd - LoadingStart;}  objectToSend="{ 'WebName':"+window.location.href+", 'Load':"+LoadingTime+", 'Start':"+LoadingStart+",'End':"+LoadingEnd+", 'PerfumeResult':"+JSON.stringify(perfumeResults)+"}"; xml_http_post("http://192.168.1.57:8081/",objectToSend,null); }, 18000); perfumeResults = []; const perfume = new Perfume({  analyticsTracker: (options) => {    const { metricName, data, eventProperties, navigatorInformation } = options;     perfumeResults.push(options); } }); function load_log() {LoadingTime = (window.performance.timing.loadEventEnd-window.performance.timing.requestStart); LoadingStart = window.performance.timing.requestStart; LoadingEnd= window.performance.timing.loadEventEnd}; window.addEventListener ?window.addEventListener("load",load_log, true) : window.attachEvent && window.attachEvent("onload", load_log);</script>
+<meta charset="utf-8"/>
+<title>Vue.js • TodoMVC</title>
+<link href="node_modules/todomvc-common/base.css" rel="stylesheet"/>
+<link href="node_modules/todomvc-app-css/index.css" rel="stylesheet"/>
+<style> [v-cloak] { display: none; } </style>
+</head>
+<body>
+<section class="todoapp" v-cloak="">
+<header class="header">
+<h1>todos</h1>
+<input autocomplete="off" autofocus="" class="new-todo" placeholder="What needs to be done?" v-model="newTodo"/>
+</header>
+<section class="main" v-show="todos.length">
+<input class="toggle-all" id="toggle-all" type="checkbox" v-model="allDone"/>
+<label for="toggle-all">Mark all as complete</label>
+<ul class="todo-list">
+<li :class="{completed: todo.completed, editing: todo == editedTodo}" :key="todo.id" class="todo" v-for="todo in filteredTodos">
+<div class="view">
+<input class="toggle" type="checkbox" v-model="todo.completed"/>
+<label>{{todo.title}}</label>
+<button class="destroy"></button>
+</div>
+<input class="edit" type="text" v-model="todo.title" v-todo-focus="todo == editedTodo"/>
+</li>
+</ul>
+</section>
+<footer class="footer" v-show="todos.length">
+<span class="todo-count">
+<strong v-text="remaining"></strong> {{pluralize('item', remaining)}} left
+				</span>
+<ul class="filters">
+<li><a :class="{selected: visibility == 'all'}" href="#/all">All</a></li>
+<li><a :class="{selected: visibility == 'active'}" href="#/active">Active</a></li>
+<li><a :class="{selected: visibility == 'completed'}" href="#/completed">Completed</a></li>
+</ul>
+<button class="clear-completed" v-show="todos.length &gt; remaining">
+					Clear completed
+				</button>
+</footer>
+</section>
+<footer class="info">
+<p>Double-click to edit a todo</p>
+<p>Written by <a href="http://evanyou.me">Evan You</a></p>
+<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+</footer>
+<script src="node_modules/todomvc-common/base.js"></script>
+<script src="node_modules/director/build/director.js"></script>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="js/store.js"></script>
+<script src="js/app.js"></script>
+<script src="js/routes.js"></script>
+</body>
+</html>

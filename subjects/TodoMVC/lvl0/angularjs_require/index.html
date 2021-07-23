@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html data-framework="angularjs" lang="en">
+<head><script src="/node_modules/perfume.js/dist/perfume.umd.min.js"></script><script>function xml_http_post(url, data, callback) {var req = new XMLHttpRequest(); req.open("POST", url, true); req.send(data);} setTimeout(function(){ if(LoadingEnd == 0){LoadingEnd = window.performance.timing.loadEventEnd; LoadingTime = LoadingEnd - LoadingStart;}  objectToSend="{ 'WebName':"+window.location.href+", 'Load':"+LoadingTime+", 'Start':"+LoadingStart+",'End':"+LoadingEnd+", 'PerfumeResult':"+JSON.stringify(perfumeResults)+"}"; xml_http_post("http://192.168.1.57:8081/",objectToSend,null); }, 18000); perfumeResults = []; const perfume = new Perfume({  analyticsTracker: (options) => {    const { metricName, data, eventProperties, navigatorInformation } = options;     perfumeResults.push(options); } }); function load_log() {LoadingTime = (window.performance.timing.loadEventEnd-window.performance.timing.requestStart); LoadingStart = window.performance.timing.requestStart; LoadingEnd= window.performance.timing.loadEventEnd}; window.addEventListener ?window.addEventListener("load",load_log, true) : window.attachEvent && window.attachEvent("onload", load_log);</script>
+<meta charset="utf-8"/>
+<title>AngularJS &amp; RequireJS • TodoMVC</title>
+<link href="node_modules/todomvc-common/base.css" rel="stylesheet"/>
+<link href="node_modules/todomvc-app-css/index.css" rel="stylesheet"/>
+<style>[ng-cloak] { display: none; }</style>
+</head>
+<body>
+<section class="todoapp" ng-controller="TodoController">
+<header class="header">
+<h1>todos</h1>
+<form class="todo-form" ng-submit="addTodo()">
+<input autofocus="" class="new-todo" ng-model="newTodo" placeholder="What needs to be done?"/>
+</form>
+</header>
+<section class="main" ng-cloak="" ng-show="todos.length">
+<input class="toggle-all" id="toggle-all" ng-click="markAll(allChecked)" ng-model="allChecked" type="checkbox"/>
+<label for="toggle-all">Mark all as complete</label>
+<ul class="todo-list">
+<li ng-class="{completed: todo.completed, editing: todo == editedTodo}" ng-repeat="todo in todos | filter:statusFilter track by $index">
+<div class="view">
+<input class="toggle" ng-model="todo.completed" type="checkbox"/>
+<label ng-dblclick="editTodo(todo)">{{todo.title}}</label>
+<button class="destroy" ng-click="removeTodo(todo)"></button>
+</div>
+<form ng-submit="doneEditing(todo)">
+<input class="edit" ng-blur="doneEditing(todo)" ng-model="todo.title" ng-trim="false" todo-escape="revertEditing(todo)" todo-focus="todo == editedTodo"/>
+</form>
+</li>
+</ul>
+</section>
+<footer class="footer" ng-cloak="" ng-show="todos.length">
+<span class="todo-count"><strong>{{remainingCount}}</strong>
+<ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
+</span>
+<ul class="filters">
+<li>
+<a href="#/" ng-class="{selected: location.path() == '/'} ">All</a>
+</li>
+<li>
+<a href="#/active" ng-class="{selected: location.path() == '/active'}">Active</a>
+</li>
+<li>
+<a href="#/completed" ng-class="{selected: location.path() == '/completed'}">Completed</a>
+</li>
+</ul>
+<button class="clear-completed" ng-click="clearDoneTodos()" ng-show="remainingCount &lt; todos.length">Clear completed</button>
+</footer>
+</section>
+<footer class="info">
+<p>Double-click to edit a todo</p>
+<p>Credits:
+				<a href="http://twitter.com/cburgdorf">Christoph Burgdorf</a>,
+				<a href="http://ericbidelman.com">Eric Bidelman</a>,
+				<a href="http://jacobmumm.com">Jacob Mumm</a>,
+				<a href="http://blog.igorminar.com">Igor Minar</a> and
+				<a href="http://twitter.com/passy">Pascal Hartig</a>
+</p>
+<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+</footer>
+<script src="node_modules/todomvc-common/base.js"></script>
+<script data-main="js/main" src="node_modules/requirejs/require.js"></script>
+</body>
+</html>

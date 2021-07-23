@@ -1,0 +1,273 @@
+diff --git a/externs/pom.xml b/externs/pom.xml
+index 7dbbc7bfb..42eeeea33 100644
+--- a/externs/pom.xml
++++ b/externs/pom.xml
+@@ -40,6 +40,7 @@
+ 
+   <build>
+     <defaultGoal>install</defaultGoal>
++    <pluginManagement>
+     <plugins>
+       <plugin>
+         <artifactId>maven-antrun-plugin</artifactId>
+@@ -63,6 +64,7 @@
+         <artifactId>maven-resources-plugin</artifactId>
+       </plugin>
+     </plugins>
++    </pluginManagement>
+     <resources>
+       <resource>
+         <directory>target/generated-resources//</directory>
+diff --git a/pom-gwt.xml b/pom-gwt.xml
+index fd8d92ea5..6d895f8f0 100644
+--- a/pom-gwt.xml
++++ b/pom-gwt.xml
+@@ -40,7 +40,7 @@
+   <properties>
+     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+-    <jdk.version>1.7</jdk.version>
++    <jdk.version>1.8</jdk.version>
+     <!-- for substitution in ParserConfig.properties -->
+     <compiler.date>${maven.build.timestamp}</compiler.date>
+     <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+diff --git a/pom-main.xml b/pom-main.xml
+index bd351c389..e35ec2704 100644
+--- a/pom-main.xml
++++ b/pom-main.xml
+@@ -40,7 +40,7 @@
+   <properties>
+     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+-    <jdk.version>1.7</jdk.version>
++    <jdk.version>1.8</jdk.version>
+     <!-- for substitution in ParserConfig.properties -->
+     <compiler.date>${maven.build.timestamp}</compiler.date>
+     <maven.build.timestamp.format>yyyy-MM-dd HH\:mm</maven.build.timestamp.format>
+diff --git a/pom.xml b/pom.xml
+index 164e1f494..ab133242f 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -135,7 +135,7 @@
+   <properties>
+     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+-    <jdk.version>1.7</jdk.version>
++    <jdk.version>1.8</jdk.version>
+     <junit.version>4.12</junit.version>
+     <guava.version>20.0</guava.version>
+     <protobuf.version>3.0.2</protobuf.version>
+diff --git a/src/com/google/javascript/jscomp/AbstractCommandLineRunner.java b/src/com/google/javascript/jscomp/AbstractCommandLineRunner.java
+index 9b11a0018..22b626279 100644
+--- a/src/com/google/javascript/jscomp/AbstractCommandLineRunner.java
++++ b/src/com/google/javascript/jscomp/AbstractCommandLineRunner.java
+@@ -19,6 +19,8 @@ package com.google.javascript.jscomp;
+ import static java.nio.charset.StandardCharsets.US_ASCII;
+ import static java.nio.charset.StandardCharsets.UTF_8;
+ 
++import java.io.PrintWriter;
++
+ import com.google.common.annotations.GwtIncompatible;
+ import com.google.common.annotations.VisibleForTesting;
+ import com.google.common.base.Function;
+@@ -32,6 +34,7 @@ import com.google.common.collect.Iterables;
+ import com.google.common.collect.Maps;
+ import com.google.common.io.ByteStreams;
+ import com.google.gson.Gson;
++import com.google.gson.GsonBuilder;
+ import com.google.gson.stream.JsonReader;
+ import com.google.gson.stream.JsonWriter;
+ import com.google.javascript.jscomp.CompilerOptions.JsonStreamMode;
+@@ -40,6 +43,9 @@ import com.google.javascript.jscomp.CompilerOptions.TweakProcessing;
+ import com.google.javascript.jscomp.deps.ClosureBundler;
+ import com.google.javascript.jscomp.deps.ModuleLoader;
+ import com.google.javascript.jscomp.deps.SourceCodeEscapers;
++import com.google.javascript.jscomp.graph.DiGraph;
++import com.google.javascript.jscomp.graph.Graph.GraphEdge;
++import com.google.javascript.jscomp.graph.GraphNode;
+ import com.google.javascript.rhino.Node;
+ import com.google.javascript.rhino.TokenStream;
+ import com.google.protobuf.CodedOutputStream;
+@@ -994,7 +1000,7 @@ public abstract class AbstractCommandLineRunner<A extends Compiler,
+     if (writeOutputToFile) {
+       return fileNameToLegacyOutputWriter(config.jsOutputFile);
+     } else {
+-      return streamToLegacyOutputWriter(defaultJsOutput);
++      return null; // streamToLegacyOutputWriter(defaultJsOutput);
+     }
+   }
+ 
+@@ -1013,6 +1019,7 @@ public abstract class AbstractCommandLineRunner<A extends Compiler,
+    * @return system exit status
+    */
+   protected int doRun() throws IOException {
++    long startTime = System.nanoTime();
+     Compiler.setLoggingLevel(Level.parse(config.loggingLevel));
+ 
+     compiler = createCompiler();
+@@ -1111,7 +1118,91 @@ public abstract class AbstractCommandLineRunner<A extends Compiler,
+       }
+     }
+ 
+-    return processResults(result, modules, options);
++    CallGraph cg = new CallGraph(compiler);
++	long beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
++	cg.process(compiler.externsRoot, compiler.jsRoot);
++
++//	PrintWriter cfgFile = new PrintWriter(new File("cfg.json"));
++
++	DiGraph<CallGraph.Function, CallGraph.Callsite> fDiGraph = cg.getForwardDirectedGraph();
++	long id = 1;
++	CGExportEntity jsonEntity = new CGExportEntity();
++	jsonEntity.setNodes(new ArrayList<>());
++	jsonEntity.setLinks(new ArrayList<>());
++	Map<GraphNode<CallGraph.Function, CallGraph.Callsite>, Long> nodeIdMap = new HashMap<>();
++	Set<CGEdgeData> edgeSet = new HashSet<>();
++
++	for (GraphEdge<CallGraph.Function, CallGraph.Callsite> edge : fDiGraph.getEdges()) {
++		CGEdgeData eData = new CGEdgeData();
++		eData.setLabel(probeResolvingSiteName(edge, true) + " -> " + probeResolvingSiteName(edge, false));
++		GraphNode<CallGraph.Function, CallGraph.Callsite> nodeA = edge.getNodeA();
++		GraphNode<CallGraph.Function, CallGraph.Callsite> nodeB = edge.getNodeB();
++		if (nodeIdMap.putIfAbsent(nodeA, id) == null) {
++			CGNodeData nData = new CGNodeData();
++			nData.setId(id++);
++			nData.setLabel(
++					"{main}".equals(nodeA.getValue().getName()) ? "[toplevel]" : "[" + nodeA.getValue().getAstNode().getSourceFileName() + "]" + nodeA.getValue().getName());
++			nData.setPos("[toplevel]".equals(nData.getLabel()) ? "toplevel:1:1" :
++				nodeA.getValue().getAstNode().getSourceFileName() + ":"
++					+ nodeA.getValue().getAstNode().getLineno() + ":"
++					+ (nodeA.getValue().getAstNode().getCharno() + 1));
++			jsonEntity.getNodes().add(nData);
++		}
++		if (nodeIdMap.putIfAbsent(nodeB, id) == null) {
++			CGNodeData nData = new CGNodeData();
++			nData.setId(id++);
++			nData.setLabel(
++					"{main}".equals(nodeB.getValue().getName()) ? "[toplevel]" : "[" + nodeB.getValue().getAstNode().getSourceFileName() + "]" + nodeB.getValue().getName());
++			nData.setPos("[toplevel]".equals(nData.getLabel()) ? "toplevel:1:1" :
++				nodeB.getValue().getAstNode().getSourceFileName() + ":"
++					+ nodeB.getValue().getAstNode().getLineno() + ":"
++					+ (nodeB.getValue().getAstNode().getCharno() + 1));
++			jsonEntity.getNodes().add(nData);
++		}
++
++		long a = nodeIdMap.get(nodeA);
++		long b = nodeIdMap.get(nodeB);
++		eData.setSource(a);
++		eData.setTarget(b);
++
++		if (!edgeSet.contains(eData)) {
++			edgeSet.add(eData);
++			jsonEntity.getLinks().add(eData);
++		}
++	}
++
++	Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
++
++	System.out.println(gson.toJson(jsonEntity));
++//	cfgFile.print(gson.toJson(jsonEntity));
++//	cfgFile.close();
++
++	long afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
++	long actualMemUsed=afterUsedMem-beforeUsedMem;
++
++    int retCode = processResults(result, modules, options);
++
++    long stopTime = System.nanoTime();
++    long elapsedTime = stopTime - startTime;
++
++//    System.out.println("Testing live changes CallGraph should be done");
++//    System.out.println("Nodes: " + jsonEntity.getNodes().size());
++//	System.out.println("Edges: " + jsonEntity.getLinks().size());
++//	System.out.println("Mem: " + actualMemUsed);
++//	System.out.println("Time: " + elapsedTime);
++
++    return retCode;
++  }
++
++  private String probeResolvingSiteName(GraphEdge<CallGraph.Function, CallGraph.Callsite> edge, boolean a) {
++		String res = "";
++		if (a) {
++			res += edge.getNodeA().getValue().getName();
++		} else {
++			res += edge.getNodeB().getValue().getName() == null ? "ANONYMOUS" : edge.getNodeB().getValue().getName();
++		}
++
++		return res.equals("{main}") ? "[toplevel]" : "[" + (a ? edge.getNodeA().getValue().getAstNode().getSourceFileName() : edge.getNodeB().getValue().getAstNode().getSourceFileName()) + "]" + res;
+   }
+ 
+   /**
+@@ -1229,10 +1320,12 @@ public abstract class AbstractCommandLineRunner<A extends Compiler,
+       }
+ 
+       Appendable jsOutput = createDefaultOutput();
+-      writeOutput(
+-          jsOutput, compiler, compiler.toSource(), config.outputWrapper,
+-          marker, escaper);
+-      closeAppendable(jsOutput);
++      if (jsOutput != null) {
++	      writeOutput(
++	          jsOutput, compiler, compiler.toSource(), config.outputWrapper,
++	          marker, escaper);
++	      closeAppendable(jsOutput);
++      }
+     }
+   }
+ 
+diff --git a/src/com/google/javascript/jscomp/CommandLineRunner.java b/src/com/google/javascript/jscomp/CommandLineRunner.java
+index 744976840..e5dca36bb 100644
+--- a/src/com/google/javascript/jscomp/CommandLineRunner.java
++++ b/src/com/google/javascript/jscomp/CommandLineRunner.java
+@@ -1734,13 +1734,14 @@ public class CommandLineRunner extends
+   @Override
+   protected List<SourceFile> createExterns(CompilerOptions options) throws IOException {
+     List<SourceFile> externs = super.createExterns(options);
+-    if (isInTestMode()) {
+-      return externs;
+-    } else {
+-      List<SourceFile> builtinExterns = getBuiltinExterns(options.getEnvironment());
+-      builtinExterns.addAll(externs);
+-      return builtinExterns;
+-    }
++    return externs;
++//    if (isInTestMode()) {
++//      return externs;
++//    } else {
++//      List<SourceFile> builtinExterns = getBuiltinExterns(options.getEnvironment());
++//      builtinExterns.addAll(externs);
++//      return builtinExterns;
++//    }
+   }
+ 
+   private static ImmutableList<ConformanceConfig> loadConformanceConfigs(List<String> configPaths) {
+diff --git a/src/com/google/javascript/refactoring/CodeReplacement.java b/src/com/google/javascript/refactoring/CodeReplacement.java
+index dfcf8facb..580967f45 100644
+--- a/src/com/google/javascript/refactoring/CodeReplacement.java
++++ b/src/com/google/javascript/refactoring/CodeReplacement.java
+@@ -16,14 +16,14 @@
+ 
+ package com.google.javascript.refactoring;
+ 
+-import com.google.auto.value.AutoValue;
++//import com.google.auto.value.AutoValue;
+ 
+ /**
+  * Class that represents a set of changes to make to the code.
+  *
+  * @author mknichel@google.com (Mark Knichel)
+  */
+-@AutoValue
++//@AutoValue
+ public abstract class CodeReplacement {
+ 
+   static CodeReplacement create(int startPosition, int length, String newContent) {
+@@ -31,7 +31,7 @@ public abstract class CodeReplacement {
+   }
+ 
+   static CodeReplacement create(int startPosition, int length, String newContent, String sortKey) {
+-    return new AutoValue_CodeReplacement(startPosition, length, newContent, sortKey);
++    return null;//new AutoValue_CodeReplacement(startPosition, length, newContent, sortKey);
+   }
+ 
+   /**

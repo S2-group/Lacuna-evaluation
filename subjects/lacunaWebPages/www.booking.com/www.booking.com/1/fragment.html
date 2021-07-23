@@ -1,0 +1,289 @@
+<style>
+    .m-newsletter-signup {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+        border-bottom: 8px solid #E0E0E0;
+        padding: 16px;
+    }
+
+    .index .m-newsletter-signup,
+    .hotel .m-newsletter-signup {
+        padding: 16px 10px;
+    }
+
+    .m-newsletter-signup__title {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+
+    .m-newsletter-signup__subtitle {
+        margin-bottom: 8px;
+    }
+
+    .m-newsletter-signup__header-container {
+        display: table;
+        overflow: hidden;
+        margin-bottom: 8px;
+        width: 100%;
+    }
+
+    .m-newsletter-signup__form-group {
+        margin-bottom: 8px;
+    }
+
+    .m-newsletter-signup__form-control {
+        margin-top: 16px;
+    }
+
+    .m-newsletter-signup__header-left {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .m-newsletter-signup__header-right {
+        display: table-cell;
+        padding-left: 16px;
+        vertical-align: middle;
+        width: 48px;
+    }
+
+    .rtl .m-newsletter-signup__header-right {
+        padding-right: 16px;
+        padding-left: 0;
+    }
+
+    .m-newsletter-signup__header-icon svg {
+        background-color: #FEBB02;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+    }
+
+    .m-newsletter-signup .feedback_msg {
+        color: #0AB21B;
+        display: none;
+        margin-bottom: 8px;
+    }
+
+    .m-newsletter-signup .feedback_msg_error {
+        color: #FF0202;
+    }
+
+    .m-newsletter-signup input.newsletter_to.error {
+        border-color: #E21111;
+    }
+
+    .hotel.htMap-tab-active .m-newsletter-signup {
+        display: none;
+    }
+</style>
+<div class="m-newsletter-signup">
+    <div class="m-newsletter-signup__header-container">
+        <h3 class="m-newsletter-signup__title">
+            Subscribe for discounts of up to 50%
+        </h3>
+    </div>
+    <div class="m-newsletter-signup__form-container">
+        <form action="https://www.booking.com/newslettersubscribe.html" method="post" name="newsletterform" class="signupForm footerForm">
+            <input type="hidden" name="bhc_csrf_token" value="G1CfXQAAAAA=Y8T6xi_aIM5KoiQdxFWqyqzT1hwAxPf1u2ZLk3rsn1XtMfSSaDkBJZE1YRyqxo504PL72PQsiE3YZnsMPdGDh-SKAtPni8CqWbxnc-GM8XH2RRD-vx3NU8_6WJbkcqV5ieXVL9NWf9rXqUORnhc_E0-TTsV2gwjAuw9joBRVPMWHbyOH_FykzEsfIyQcd9PAiuK_c3VfaPi7kJkm">
+            <input type="hidden" name="aid" value="304142" />
+            <input type="hidden" name="label" value="gen173nr-1DCAEoggI46AdIM1gEaKkBiAECmAExuAEJyAER2AED6AEB-AECiAIBqAIDuALar_zsBcACAQ" />
+            <input type="hidden" name="sid" value="a18d0e3647ad471a1ddf7cf6315fd08d" />
+            <input type="hidden" name="url" value="" />
+            <input type="hidden" name="hostname" value="www.booking.com" />
+            <input type="hidden" name="companyname" value="Booking.com" />
+            <input type="hidden" name="endpoint_url" value="https://www.booking.com&#47;fragment.html?aid=304142;label=gen173nr-1DCAEoggI46AdIM1gEaKkBiAECmAExuAEJyAER2AED6AEB-AECiAIBqAIDuALar_zsBcACAQ;sid=a18d0e3647ad471a1ddf7cf6315fd08d;tmpl=email_subscription%2Fcomp;name=lp.async_components_render_template&amp;;#endpoint_url"
+            />
+            <input type="hidden" name="error_url" value="https://www.booking.com&#47;fragment.html?aid=304142;label=gen173nr-1DCAEoggI46AdIM1gEaKkBiAECmAExuAEJyAER2AED6AEB-AECiAIBqAIDuALar_zsBcACAQ;sid=a18d0e3647ad471a1ddf7cf6315fd08d;tmpl=email_subscription%2Fcomp;name=lp.async_components_render_template&amp;;"
+            />
+            <input type="hidden" name="aid" value="304142" />
+            <input type="hidden" name="subscribe_source" value="mobile_footer_fragment" />
+            <div class="m-newsletter-signup__form-group">
+                <input class="bui-form__control newsletter_to newsletter_subscription_to newsletter_hideable ClickTaleSensitive" type="email" autocapitalize="off" placeholder="your@email.here" name="to" />
+            </div>
+            <div>
+                <p class="feedback_msg feedback_msg_error newsletter_subscribe_error_invalid ">
+                    Please enter a valid email address.
+                </p>
+                <p class="feedback_msg feedback_msg_error newsletter_subscribe_error_denied ">
+                    Oops! An error has occurred.
+                </p>
+                <p class="feedback_msg feedback_msg_error newsletter_subscribe_error_bad_unknown ">
+                    Oops! An error has occurred.
+                </p>
+                <p class="feedback_msg newsletter_sub_success ">
+                    Thanks! We've sent you an email so you can confirm your subscription
+                </p>
+            </div>
+            <div class="m-newsletter-signup__form-control">
+                <a id="newsletter_button_footer" class="bui-button bui-button--secondary newsletter_button newsletter_hideable" data-tracker="m_newsletter_signup_submit">
+Subscribe
+</a>
+            </div>
+            <input name="recaptcha_enabled" value="1" type="hidden">
+            <script>
+                window.onLoadRecaptchaV3Callback = function() {
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute('6LfzopcUAAAAAPh4ue2iRjzP6XdxDVpwJigtlmeD', {
+                            action: 'fragment'
+                        }).then(function(token) {
+                            var target = $('form[name=newsletterform]');
+                            target.append("<input type=hidden name=recaptcha_token value=" + token + " >");
+                            target.closest('form').submit(function() {
+                                $('.grecaptcha-badge').show().css('visibility', 'visible');
+                            });
+                        });
+                    });
+                };
+            </script>
+            <style>
+                .grecaptcha-badge {
+                    display: none;
+                    bottom: 90px !important;
+                }
+            </style>
+            <div data-component="core/recaptcha/v3" data-key="6LfzopcUAAAAAPh4ue2iRjzP6XdxDVpwJigtlmeD" data-onload="onLoadRecaptchaV3Callback" data-delay-load="ready"></div>
+        </form>
+    </div>
+</div>
+<script>
+    $(function() {
+        var input = $('input#newsletter_to'); // input text field
+        var default_value = input.val();
+        input.focus(function() {
+            if ($.trim($(input).val()) == default_value) input.val('');
+        });
+        input.blur(function() {
+            if ($.trim($(input).val()) == '') input.val(default_value);
+        });
+        var forms = $('#newsletter_to', '.footerForm', '.js-newsletter-input'),
+            defaultValue = forms.attr('value');
+        forms.click(function() {
+            var el = $(this);
+            if (el.val() === defaultValue) el.val('');
+            else el.select();
+            $('#newsletter_button_footer').fadeIn();
+        });
+        forms.blur(function() {
+            var el = $(this);
+            if (el.val() === '') el.val(defaultValue);
+        });
+        /* Let's submit the hidden subscribe form if the user hits the subscribe_thanks page */
+        if ($('body').hasClass('unsub_hero_thanks')) {
+            $(document).ready(function() {
+                $('#newsletter_button_footer')
+                    .parents('form:first')
+                    .submit();
+            });
+        }
+        $('#newsletter_button_footer').click(function() {
+            $(this)
+                .parents('form:first')
+                .submit();
+        });
+        $('.signupForm').submit(function(event) {
+            event.preventDefault();
+            // validate and process form
+            // first hide any error messages
+            $('.newsletter_ajax_error').hide();
+            var env = booking.env,
+                container_el = $(this),
+                emailReg = /^([\w-\.\+]+@([\w-]+\.)+[\w-]{2,4})?$/,
+                url = $('input[name=url]', container_el).val(),
+                hostname = $('input[name=hostname]', container_el).val(),
+                aid = $('input[name=aid]', container_el).val(),
+                companyname = $('input[name=companyname]', container_el).val(),
+                subscribe_source = $('input[name=subscribe_source]', container_el).val(),
+                to = $('input[name=to]', container_el).val(),
+                dataString;
+            if (to === '' || !emailReg.test(to)) {
+                $('.newsletter_subscribe_error_invalid', container_el).show();
+                $('.newsletter_sub_success', container_el).hide();
+                $('#newsletter_to').addClass('invalid');
+                return false;
+            }
+            // encodeURIComponent encodes email with '+' properly
+            to = encodeURIComponent(to);
+            dataString =
+                'to=' +
+                to +
+                '&url=' +
+                url +
+                '&hostname=' +
+                hostname +
+                '&aid=' +
+                aid +
+                '&companyname=' +
+                companyname +
+                '&subscribe_source=' +
+                subscribe_source;
+            if (container_el.find('[name=recaptcha_enabled]').val()) {
+                dataString += '&recaptcha_enabled=1&recaptcha_token=' + container_el.find('[name=recaptcha_token]').val();
+            }
+            $.ajax({
+                type: 'POST',
+                url: '/newslettersubscribe.json',
+                data: dataString,
+                dataType: 'json',
+                success: function(data) {
+                    if (data.success === 0) {
+                        if (data.error === 'denied') {
+                            if ($('form').hasClass('unsubHero-action')) {
+                                $('form.unsubHero-action').addClass('error');
+                                $('.unsubscribe_hero .blurb .error').show();
+                            } else {
+                                $('.newsletter_subscribe_error_denied', container_el).show();
+                                $(
+                                    '.newsletter_subscribe_error_bad_unknown, .newsletter_subscribe_error_invalid, .newsletter_sub_success',
+                                    container_el
+                                ).hide();
+                            }
+                        } else if (data.error === 'bad_params') {
+                            if ($('form').hasClass('unsubHero-action')) {
+                                $('form.unsubHero-action').addClass('error');
+                                $('.unsubscribe_hero .blurb .error').show();
+                            } else {
+                                $('.newsletter_subscribe_error_bad_unknown', container_el).show();
+                                $(
+                                    '.newsletter_subscribe_error_denied, .newsletter_subscribe_error_invalid, .newsletter_sub_success',
+                                    container_el
+                                ).hide();
+                            }
+                        }
+                        return;
+                    } else if (data.success === 1) {
+                        if ($('div#flashdealsbg_wrapper').length) {
+                            window.location.href = env.b_nonsecure_hostname_signup + env.b_fd_searchresults_url_signup;
+                        } else {
+                            if ($('form').hasClass('unsubHero-action')) {
+                                $('form').hide();
+                                $('.unsubscribe_hero .blurb').hide();
+                                $('.unsubscribe_hero .success-blurb').show();
+                                $('.unsubHero-form').addClass('success');
+                            } else {
+                                $('.newsletter_sub_success', container_el).show();
+                                $('.feedback_msg_error', container_el).hide();
+                                $('#add_location_to').val(to);
+                                $(
+                                    '.newsletter_form_fields, .newsletter_subscribe_error_bad_unknown, .newsletter_subscribe_error_denied, .newsletter_subscribe_error_invalid',
+                                    container_el
+                                ).hide();
+                                $('#newsletter_button_footer').hide();
+                                $('#newsletter_to').hide();
+                            }
+                            if (data.has_account) {
+                                var form = $('#userdataform form').eq(0);
+                                if (form) {
+                                    form.attr('action', form.attr('data-url-login'));
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    });
+</script>

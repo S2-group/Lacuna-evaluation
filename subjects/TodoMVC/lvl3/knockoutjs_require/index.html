@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html data-framework="knockoutjs" lang="en">
+<head><script src="/node_modules/perfume.js/dist/perfume.umd.min.js"></script><script>function xml_http_post(url, data, callback) {var req = new XMLHttpRequest(); req.open("POST", url, true); req.send(data);} setTimeout(function(){ if(LoadingEnd == 0){LoadingEnd = window.performance.timing.loadEventEnd; LoadingTime = LoadingEnd - LoadingStart;}  objectToSend="{ 'WebName':"+window.location.href+", 'Load':"+LoadingTime+", 'Start':"+LoadingStart+",'End':"+LoadingEnd+", 'PerfumeResult':"+JSON.stringify(perfumeResults)+"}"; xml_http_post("http://192.168.1.57:8081/",objectToSend,null); }, 18000); perfumeResults = []; const perfume = new Perfume({  analyticsTracker: (options) => {    const { metricName, data, eventProperties, navigatorInformation } = options;     perfumeResults.push(options); } }); function load_log() {LoadingTime = (window.performance.timing.loadEventEnd-window.performance.timing.requestStart); LoadingStart = window.performance.timing.requestStart; LoadingEnd= window.performance.timing.loadEventEnd}; window.addEventListener ?window.addEventListener("load",load_log, true) : window.attachEvent && window.attachEvent("onload", load_log);</script>
+<meta charset="utf-8"/>
+<title>Knockout.js • TodoMVC</title>
+<link href="node_modules/todomvc-common/base.css" rel="stylesheet"/>
+<link href="node_modules/todomvc-app-css/index.css" rel="stylesheet"/>
+</head>
+<body>
+<section class="todoapp">
+<header class="header">
+<h1>todos</h1>
+<input autofocus="" class="new-todo" data-bind="value: current, valueUpdate: 'afterkeydown', enterKey: add" placeholder="What needs to be done?"/>
+</header>
+<section class="main" data-bind="visible: todos().length">
+<input class="toggle-all" data-bind="checked: allCompleted" id="toggle-all" type="checkbox"/>
+<label for="toggle-all">Mark all as complete</label>
+<ul class="todo-list" data-bind="foreach: todos">
+<li data-bind="css: { completed: completed, editing: editing }">
+<div class="view">
+<input class="toggle" data-bind="checked: completed" type="checkbox"/>
+<label data-bind="text: title, event: { dblclick: $root.editItem }"></label>
+<button class="destroy" data-bind="click: $root.remove"></button>
+</div>
+<input class="edit" data-bind="value: title, valueUpdate: 'afterkeydown', enterKey: $root.stopEditing, escapeKey: $root.cancelEditing, selectAndFocus: editing, event: { blur: $root.stopEditing }"/>
+</li>
+</ul>
+</section>
+<footer class="footer" data-bind="visible: completedCount() || remainingCount()">
+<span class="todo-count">
+<strong data-bind="text: remainingCount">0</strong>
+<span data-bind="text: getLabel(remainingCount)"></span> left
+				</span>
+<button class="clear-completed" data-bind="visible: completedCount, click: removeCompleted">Clear completed</button>
+</footer>
+</section>
+<footer class="info">
+<p>Double-click to edit a todo</p>
+<p>Written by <a href="https://github.com/ashish01/knockoutjs-todos">Ashish Sharma</a>, <a href="http://knockmeout.net">Ryan Niemeyer</a> and <a href="https://twitter.com/loicknuchel">Loïc Knuchel</a></p>
+<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+</footer>
+<script src="node_modules/todomvc-common/base.js"></script>
+<script data-main="js/main" src="node_modules/requirejs/require.js"></script>
+</body>
+</html>

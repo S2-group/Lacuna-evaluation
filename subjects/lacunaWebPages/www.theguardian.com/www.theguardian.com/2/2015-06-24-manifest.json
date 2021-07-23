@@ -1,0 +1,32 @@
+
+
+{
+    "name":"The Guardian",
+    "short_name":"The Guardian",
+    "icons":[
+        {
+            "type": "image/png",
+            "sizes": "192x192",
+            "src": "https://assets.guim.co.uk/images/favicons/5a595a7864d8572d7d8d853e5b0f7602/roundel-192x192.png"
+        },
+        {
+            "type": "image/png",
+            "sizes": "152x152",
+            "src": "https://assets.guim.co.uk/images/favicons/5aed51cb188a5c0b5ca9aefa75ff7ae1/roundel-152x152.png"
+        },
+        {
+            "type": "image/png",
+            "sizes": "114x114",
+            "src": "https://assets.guim.co.uk/images/favicons/6e90957b7eb12ed2e2a81244b64d650d/roundel-114x114.png"
+        }
+    ],
+    "theme_color": "#e7edef",
+    "background_color": "#121212",
+    "display": "browser",
+    "orientation": "portrait",
+    "gcm_sender_id":"660236028602",
+    "gcm_user_visible_only":true,
+    "permissisons": [
+        "gcm"
+    ]
+}

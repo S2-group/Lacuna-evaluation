@@ -1,0 +1,5 @@
+
+        $(function() {
+            UniversalAuth.performAuth();
+        });
+    
