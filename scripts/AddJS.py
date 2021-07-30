@@ -83,4 +83,4 @@ if __name__ == '__main__':
    add_js("lacunaWebPages/www.theguardian.com/")
    add_js("lacunaWebPages/www.office.com/")
    add_js("lacunaWebPages/www.paypal.com/")
-   add_js("subjects/")
+   add_js("TodoMVC/")
