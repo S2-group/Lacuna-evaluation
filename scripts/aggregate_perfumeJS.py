@@ -130,10 +130,10 @@ if __name__ == '__main__':
             level0_fcp = level0_fcp.append(pd.Series([CSS_Size] + list(res3), index=level0_fcp.columns), ignore_index=True)
             level0_load = level0_load.append(pd.Series([CSS_Size] + list(res4), index=level0_load.columns), ignore_index=True)
     
-    level0_fp.to_csv('Aggregated_perfumeJS/level0_Results_Fp.csv', header=True, index=None)
-    level0_fcp.to_csv('Aggregated_perfumeJS/level0_Results_Fcp.csv', header=True, index=None)
-    level0_load.to_csv('Aggregated_perfumeJS/level0_Results_Load.csv', header=True, index=None)
-    level0_start.to_csv('Aggregated_perfumeJS/level0_Results_Start.csv', header=True, index=None)
+    level0_fp.to_csv('aggregated_perfumeJS/level0_Results_Fp.csv', header=True, index=None)
+    level0_fcp.to_csv('aggregated_perfumeJS/level0_Results_Fcp.csv', header=True, index=None)
+    level0_load.to_csv('aggregated_perfumeJS/level0_Results_Load.csv', header=True, index=None)
+    level0_start.to_csv('aggregated_perfumeJS/level0_Results_Start.csv', header=True, index=None)
 
     
     # Parse level1
@@ -150,10 +150,10 @@ if __name__ == '__main__':
             level1_load = level1_load.append(pd.Series([CSS_Size] + list(res4), index=level1_load.columns), ignore_index=True)
     
     
-    level1_fp.to_csv('Aggregated_perfumeJS/level1_Results_Fp.csv', header=True, index=None)
-    level1_fcp.to_csv('Aggregated_perfumeJS/level1_Results_Fcp.csv', header=True, index=None)
-    level1_load.to_csv('Aggregated_perfumeJS/level1_Results_Load.csv', header=True, index=None)
-    level1_start.to_csv('Aggregated_perfumeJS/level1_Results_Start.csv', header=True, index=None)
+    level1_fp.to_csv('aggregated_perfumeJS/level1_Results_Fp.csv', header=True, index=None)
+    level1_fcp.to_csv('aggregated_perfumeJS/level1_Results_Fcp.csv', header=True, index=None)
+    level1_load.to_csv('aggregated_perfumeJS/level1_Results_Load.csv', header=True, index=None)
+    level1_start.to_csv('aggregated_perfumeJS/level1_Results_Start.csv', header=True, index=None)
 
     # Parse level2
     level2_fp = pd.DataFrame(columns=fp_headers)
@@ -168,10 +168,10 @@ if __name__ == '__main__':
             level2_fcp = level2_fcp.append(pd.Series([CSS_Size] + list(res3), index=level2_fcp.columns), ignore_index=True)
             level2_load = level2_load.append(pd.Series([CSS_Size] + list(res4), index=level2_load.columns), ignore_index=True)
     
-    level2_fp.to_csv('Aggregated_perfumeJS/level2_Results_Fp.csv', header=True, index=None)
-    level2_fcp.to_csv('Aggregated_perfumeJS/level2_Results_Fcp.csv', header=True, index=None)
-    level2_load.to_csv('Aggregated_perfumeJS/level2_Results_Load.csv', header=True, index=None)
-    level2_start.to_csv('Aggregated_perfumeJS/level2_Results_Start.csv', header=True, index=None)
+    level2_fp.to_csv('aggregated_perfumeJS/level2_Results_Fp.csv', header=True, index=None)
+    level2_fcp.to_csv('aggregated_perfumeJS/level2_Results_Fcp.csv', header=True, index=None)
+    level2_load.to_csv('aggregated_perfumeJS/level2_Results_Load.csv', header=True, index=None)
+    level2_start.to_csv('aggregated_perfumeJS/level2_Results_Start.csv', header=True, index=None)
 
     # Parse level3
     level3_fp = pd.DataFrame(columns=fp_headers)
@@ -186,7 +186,7 @@ if __name__ == '__main__':
             level3_fcp = level3_fcp.append(pd.Series([CSS_Size] + list(res3), index=level3_fcp.columns), ignore_index=True)
             level3_load = level3_load.append(pd.Series([CSS_Size] + list(res4), index=level3_load.columns), ignore_index=True)
     
-    level3_fp.to_csv('Aggregated_perfumeJS/level3_Results_Fp.csv', header=True, index=None)
-    level3_fcp.to_csv('Aggregated_perfumeJS/level3_Results_Fcp.csv', header=True, index=None)
-    level3_load.to_csv('Aggregated_perfumeJS/level3_Results_Load.csv', header=True, index=None)
-    level3_start.to_csv('Aggregated_perfumeJS/level3_Results_Start.csv', header=True, index=None)
+    level3_fp.to_csv('aggregated_perfumeJS/level3_Results_Fp.csv', header=True, index=None)
+    level3_fcp.to_csv('aggregated_perfumeJS/level3_Results_Fcp.csv', header=True, index=None)
+    level3_load.to_csv('aggregated_perfumeJS/level3_Results_Load.csv', header=True, index=None)
+    level3_start.to_csv('aggregated_perfumeJS/level3_Results_Start.csv', header=True, index=None)

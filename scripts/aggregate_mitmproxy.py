@@ -88,15 +88,15 @@ if __name__ == '__main__':
                     level3_packets = level3_packets.append(pd.Series(["3"] + list(res1), index=level3_packets.columns), ignore_index=True)
                     level3_bytes = level3_bytes.append(pd.Series(["3"] + list(res2), index=level3_bytes.columns), ignore_index=True)
 
-    level0_packets.to_csv('Aggregated_mitmproxy/level0_Results_Packets.csv', header=True, index=None)
-    level0_bytes.to_csv('Aggregated_mitmproxy/level0_Results_Bytes.csv', header=True, index=None)
+    level0_packets.to_csv('aggregated_mitmproxy/level0_Results_Packets.csv', header=True, index=None)
+    level0_bytes.to_csv('aggregated_mitmproxy/level0_Results_Bytes.csv', header=True, index=None)
 
-    level1_packets.to_csv('Aggregated_mitmproxy/level1_Results_Packets.csv', header=True, index=None)
-    level1_bytes.to_csv('Aggregated_mitmproxy/level1_Results_Bytes.csv', header=True, index=None)
+    level1_packets.to_csv('aggregated_mitmproxy/level1_Results_Packets.csv', header=True, index=None)
+    level1_bytes.to_csv('aggregated_mitmproxy/level1_Results_Bytes.csv', header=True, index=None)
 
-    level2_packets.to_csv('Aggregated_mitmproxy/level2_Results_Packets.csv', header=True, index=None)
-    level2_bytes.to_csv('Aggregated_mitmproxy/level2_Results_Bytes.csv', header=True, index=None)
+    level2_packets.to_csv('aggregated_mitmproxy/level2_Results_Packets.csv', header=True, index=None)
+    level2_bytes.to_csv('aggregated_mitmproxy/level2_Results_Bytes.csv', header=True, index=None)
 
-    level3_packets.to_csv('Aggregated_mitmproxy/level3_Results_Packets.csv', header=True, index=None)
-    level3_bytes.to_csv('Aggregated_mitmproxy/level3_Results_Bytes.csv', header=True, index=None)
+    level3_packets.to_csv('aggregated_mitmproxy/level3_Results_Packets.csv', header=True, index=None)
+    level3_bytes.to_csv('aggregated_mitmproxy/level3_Results_Bytes.csv', header=True, index=None)
 
