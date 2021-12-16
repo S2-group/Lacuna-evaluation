@@ -273,7 +273,7 @@ for (i in seq(1,length(vars))) {
   
   filtered_by_level <- data_lab %>% filter(lvl == "0")
   level_zero_line <- summary(filtered_by_level[[names(var)]])[['Median']]
-  
+
   bp <- ggplot(data_lab, aes(x=lvl, y=data_lab[[names(var)]])) + ylim(min_y_value, max_y_value) +
     geom_violin(trim = FALSE, alpha = 0.5, position=position_dodge(0.9)) + theme_bw() + xlab("") + ylab(var) +
     geom_boxplot(alpha=1, color="black", width=.2, fill="white", outlier.size=0) +
