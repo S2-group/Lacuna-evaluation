@@ -131,4 +131,4 @@ dmypy.json
 *.Rhistory
 *.RData
 
-./data_analysis/*.txt
+/data_analysis/*.txt
