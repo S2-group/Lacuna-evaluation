@@ -134,6 +134,27 @@ for (v in names(vars)) {
 # # Statistical tests
 # ############################
 
+########### Check normality
+
+check_normality = function(data, var_name) {
+  print(var_name)
+  plot(density(data), main=var_name) 
+  qqPlot(data, main=var_name)
+  print(shapiro.test(data))
+}
+
+print('Normality checks for the IN-THE-LAB data')
+
+for (v in names(vars)) {
+  check_normality(data_lab[[v]], v)
+}
+
+print('Normality checks for the IN-THE-WILD data')
+
+for (v in names(vars)) {
+  check_normality(data_wild[[v]], v)
+}
+
 # All assumptions of the Kruskal-Wallis test are met by design
 
 for (v in names(vars)) {
@@ -204,12 +225,12 @@ for (i in seq(1,length(vars))) {
     max_y_value <- 100
   }
 
-  bp <- ggplot(data, aes(x=subject_type, y=data[[names(var)]])) + ylim(min_y_value, max_y_value) +
+  bp <- ggplot(data, aes(x=subject_type, y=data[[names(var)]])) + ylim(min_y_value, max_y_value) + 
     geom_violin(trim = FALSE, alpha = 0.5, position=position_dodge(0.9)) + theme_bw() + xlab("") + ylab(var) +
     geom_boxplot(alpha=1, color="black", width=.2, fill="white", outlier.size=0) +
     stat_summary(fun.y=mean, colour="black", geom="point", 
                shape=5, size=1,show_guide = FALSE) +
-    ggtitle(var) + 
+    ggtitle(var) +
     guides(color=guide_legend(title="")) + theme(plot.title=element_text(size=fontSize), strip.text.x=element_text(size=fontSize), strip.text.y=element_text(size=fontSize),  axis.text.x=element_text(size=fontSize, angle = 45, hjust = 1), axis.text.y=element_text(size=fontSize), axis.title=element_text(size=fontSize)) +
     scale_x_discrete(labels=c("lab" = "Lab", "wild" = "Wild")) 
   
