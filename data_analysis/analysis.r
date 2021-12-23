@@ -226,8 +226,9 @@ for (i in seq(1,length(vars))) {
   }
 
   bp <- ggplot(data, aes(x=subject_type, y=data[[names(var)]])) + ylim(min_y_value, max_y_value) + 
-    geom_violin(trim = FALSE, alpha = 0.5, position=position_dodge(0.9)) + theme_bw() + xlab("") + ylab(var) +
-    geom_boxplot(alpha=1, color="black", width=.2, fill="white", outlier.size=0) +
+    # geom_violin(trim = FALSE, alpha = 0.5, position=position_dodge(0.9)) + 
+    theme_bw() + xlab("") + ylab(var) +
+    geom_boxplot(alpha=1, color="black", width=.8, fill="white", outlier.size=0) +
     stat_summary(fun.y=mean, colour="black", geom="point", 
                shape=5, size=1,show_guide = FALSE) +
     ggtitle(var) +
@@ -296,8 +297,9 @@ for (i in seq(1,length(vars))) {
   level_zero_line <- summary(filtered_by_level[[names(var)]])[['Median']]
 
   bp <- ggplot(data_lab, aes(x=lvl, y=data_lab[[names(var)]])) + ylim(min_y_value, max_y_value) +
-    geom_violin(trim = FALSE, alpha = 0.5, position=position_dodge(0.9)) + theme_bw() + xlab("") + ylab(var) +
-    geom_boxplot(alpha=1, color="black", width=.2, fill="white", outlier.size=0) +
+    # geom_violin(trim = FALSE, alpha = 0.5, position=position_dodge(0.9)) + 
+    theme_bw() + xlab("") + ylab(var) +
+    geom_boxplot(alpha=1, color="black", width=.8, fill="white", outlier.size=0) +
     stat_summary(fun.y=mean, colour="black", geom="point", 
                  shape=5, size=1,show_guide = FALSE) +
     ggtitle('In-the-lab subjects') +
@@ -311,8 +313,9 @@ for (i in seq(1,length(vars))) {
   level_zero_line <- summary(filtered_by_level[[names(var)]])[['Median']]
   
   bp <- ggplot(data_wild, aes(x=lvl, y=data_wild[[names(var)]])) + ylim(min_y_value, max_y_value) +
-    geom_violin(trim = FALSE, alpha = 0.5, position=position_dodge(0.9)) + theme_bw() + xlab("") + ylab('') +
-    geom_boxplot(alpha=1, color="black", width=.2, fill="white", outlier.size=0) +
+    # geom_violin(trim = FALSE, alpha = 0.5, position=position_dodge(0.9)) + 
+    theme_bw() + xlab("") + ylab('') +
+    geom_boxplot(alpha=1, color="black", width=.8, fill="white", outlier.size=0) +
     stat_summary(fun.y=mean, colour="black", geom="point", 
                  shape=5, size=1,show_guide = FALSE) +
     ggtitle('In-the-wild subjects') +
