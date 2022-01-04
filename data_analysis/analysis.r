@@ -166,8 +166,8 @@ for (v in names(vars)) {
   print(res.kruskal)
   
   # Compute the Chi2 effect size estimation
-  chi2 <- data_wild %>% kruskal_effsize(as.formula(paste(v, '~ lvl')))
-  print(chi2)
+  eff_size <- data_wild %>% kruskal_effsize(as.formula(paste(v, '~ lvl')))
+  print(eff_size)
   
   # Compute the Dunn's test across all possible pairs of the optimization levels
   pwc <- data_wild %>% dunn_test(as.formula(paste(v, '~ lvl')), p.adjust.method = "BH")
@@ -189,8 +189,8 @@ for (v in names(vars)) {
   print(res.kruskal)
   
   # Compute the Chi2 effect size estimation
-  chi2 <- data_lab %>% kruskal_effsize(as.formula(paste(v, '~ lvl')))
-  print(chi2)
+  eff_size <- data_lab %>% kruskal_effsize(as.formula(paste(v, '~ lvl')))
+  print(eff_size)
   
   # Compute the Dunn's test across all possible pairs of the optimization levels
   pwc <- data_lab %>% dunn_test(as.formula(paste(v, '~ lvl')), p.adjust.method = "BH")
