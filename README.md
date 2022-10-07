@@ -1,5 +1,5 @@
 # Lacuna V2 evaluation 
-This repository contains all the material needed to replicate an experiment on [Lacuna V2](https://github.com/Kishanjay/LacunaV2) evaluation. This tool allows the removal of JavaScript dead code with 4 different optimization levels. The goal of the experiment is to evaluate the impact of this smell on various run-time metrics, measured in mobile web applications on Android smartphones. 
+This repository contains all the material needed to replicate an experiment on [Lacuna V2](https://github.com/S2-group/Lacuna) evaluation. This tool allows the removal of JavaScript dead code with 4 different optimization levels. The goal of the experiment is to evaluate the impact of this smell on various run-time metrics, measured in mobile web applications on Android smartphones. 
 
 The collected metrics and the tools used to measure them, are the following: 
 #### Energy consumption
