@@ -21,7 +21,7 @@ All the data and tools required for the replication of the experiment are provid
 
 * [LacunaV2-master](https://github.com/S2-group/Lacuna-evaluation/tree/main/LacunaV2-master) - Tool used to remove JavaScript dead code from the subjects
 * [android-runner](https://github.com/S2-group/Lacuna-evaluation/tree/main/android-runner) - Tool adopted to automate the execution of the experiment on the Android device
-* [data](https://github.com/S2-group/Lacuna-evaluation/tree/main/data) - Raw and aggregated data obtained from the execution of the experiment
+* [data](https://github.com/S2-group/Lacuna-evaluation/tree/main/data) - Raw and aggregated data obtained from the execution of the experiment, including also the raw data about the count of the number of functions in each subject
 * [data_analysis](https://github.com/S2-group/Lacuna-evaluation/tree/main/data_analysis) - Script adopted for data processing and analysis
 * [scripts](https://github.com/S2-group/Lacuna-evaluation/tree/main/scripts) - Aggregation scripts adopted on raw data and scripts used on the subjects
 * [subjects](https://github.com/S2-group/Lacuna-evaluation/tree/main/subjects) - Web Applications executed on the mobile device during the experiment. For each subject there are 4 different versions, one for every optimization level in Lacuna V2. 
