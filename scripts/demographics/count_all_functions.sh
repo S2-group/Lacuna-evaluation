@@ -21,7 +21,7 @@ LAB_NAMES=("vanillajs")
 # WILD_NAMES=("apache.org" "nl.godaddy.com" "www.amazon.com" "www.booking.com" "www.office.com" "www.wikipedia.org" "aws.amazon.com" "stackexchange.com" "www.amazon.in" "www.buzzfeed.com" "www.paypal.com" "m.youtube.com" "stackoverflow.com" "www.bbc.com" "www.mozilla.org" "www.theguardian.com")
 
 # Print CSV header
-echo "subject,level,dead,alive"
+echo "subject_name,lvl,dead,alive,subject_type"
 
 #Iterate over all in-the-lab subjects
 for i in ${LAB_NAMES[@]};
@@ -41,7 +41,7 @@ do
 		fi
 		DEAD=$((TOTAL_FUNCTIONS-COUNTED))
 		ALIVE=$COUNTED
-		echo "$i,$j,$DEAD,$ALIVE"
+		echo "$i,$j,$DEAD,$ALIVE,lab"
 	done
 done
 
@@ -63,6 +63,6 @@ do
 		fi
 		DEAD=$((TOTAL_FUNCTIONS-COUNTED))
 		ALIVE=$COUNTED
-		echo "$i,$j,$DEAD,$ALIVE"
+		echo "$i,$j,$DEAD,$ALIVE,wild"
 	done
 done
