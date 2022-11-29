@@ -14,6 +14,7 @@ library(ggpubr)
 library(ez)
 library(bestNormalize)
 library(effectsize)
+library(rmcorr)
 
 options(max.print=50)
 font_size = 10
@@ -92,6 +93,9 @@ data$lvl <- as.factor(data$lvl)
 data_wild <- data %>% filter(subject_type == "wild")
 data_lab <- data %>% filter(subject_type == "lab")
 
+# We merge data and function_counts into a single dataframe
+all_data <- merge(data, function_counts, by=c("subject_name", "lvl", "subject_type"))
+
 # ############################
 # # Explore via scatterplots
 # ############################
@@ -109,27 +113,17 @@ data_lab <- data %>% filter(subject_type == "lab")
 
 vars <- c('energy'='Energy (mJ)', 'load_time'='Page load time (ms)', 'fcp'='First cont. paint (ms)', 'fp'='First paint (ms)', 'packets'='HTTP requests', 'bytes'='Transferred bytes (Kb)', 'cpu'='CPU usage (%)', 'gpu'='GPU usage (%)', 'mem'='Memory usage (Mb)')
 
-# Overview of the collected data for each metric (boxplots)
-for (v in names(vars)) {
-  boxplot(as.formula(paste(v, '~ lvl')), data=data)
-}
-
-# Let's see if the subjects in the wild and the subjects in the lab are very different from each other
-for (v in names(vars)) {
-  boxplot(as.formula(paste(v, '~ subject_type')), data=data)
-}
+# Let's compute the within subject coefficient of variation (so to decide if we can use the average for aggregating the 20 repeated measures)
 
 for (v in names(vars)) {
-  boxplot(as.formula(paste(v, '~ lvl')), data=data_wild)
+  print(v)
+  my.rmc <- rmcorr(participant = subject_name, measure1 = v, measure2 = dead, dataset = all_data)
+  print(my.rmc)
+  plot(my.rmc)
 }
 
-for (v in names(vars)) {
-  boxplot(as.formula(paste(v, '~ lvl')), data=data_lab)
-}
-
-#=========================================================
-# Visualizations for the article
-#=========================================================
+my.rmc <- rmcorr_mat(participant = subject_name, variables=names(vars), dataset = all_data)
+print(my.rmc)
 
 # ############## Plot values for all subjects (data exploration)
 # 
