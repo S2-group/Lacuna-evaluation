@@ -235,7 +235,7 @@ for (i in seq(1,length(vars))) {
     guides(color=guide_legend(title="")) + theme(plot.title=element_text(size=fontSize), strip.text.x=element_text(size=fontSize), strip.text.y=element_text(size=fontSize),  axis.text.x=element_text(size=fontSize, angle = 45, hjust = 1), axis.text.y=element_text(size=fontSize), axis.title=element_text(size=fontSize)) +
     scale_x_discrete(labels=c("lab" = "Lab", "wild" = "Wild")) 
   
-  ggsave(paste('./plots/overview_wild_lab/', names(var), '.pdf', sep=''), scale = 1.6, height = 4, width = 3, unit = "cm")
+  ggsave(paste('./outputs/overview_wild_lab/', names(var), '.pdf', sep=''), scale = 1.6, height = 4, width = 3, unit = "cm")
 }
 
 ############## Print Latex table for summarizing the overview of in-the-lab and in-the-wild subjets
@@ -307,7 +307,7 @@ for (i in seq(1,length(vars))) {
     guides(color=guide_legend(title="")) + theme(plot.title=element_text(size=fontSize), strip.text.x=element_text(size=fontSize), strip.text.y=element_text(size=fontSize),  axis.text.x=element_text(size=fontSize, angle = 45, hjust = 1), axis.text.y=element_text(size=fontSize), axis.title=element_text(size=fontSize)) +
     scale_x_discrete(labels=c("0" = "OL-0", "1" = "OL-1", "2" = "OL-2", "3" = "OL-3"))
   
-  ggsave(paste('./plots/', names(var), '_lab.pdf', sep=''), scale = 1.6, height = 6, width = 4, unit = "cm")
+  ggsave(paste('./outputs/', names(var), '_lab.pdf', sep=''), scale = 1.6, height = 6, width = 4, unit = "cm")
   
   filtered_by_level <- data_wild %>% filter(lvl == "0")
   level_zero_line <- summary(filtered_by_level[[names(var)]])[['Median']]
@@ -323,7 +323,7 @@ for (i in seq(1,length(vars))) {
     guides(color=guide_legend(title="")) + theme(plot.title=element_text(size=fontSize), strip.text.x=element_text(size=fontSize), strip.text.y=element_text(size=fontSize),  axis.text.x=element_text(size=fontSize, angle = 45, hjust = 1), axis.text.y=element_text(size=fontSize), axis.title=element_text(size=fontSize)) +
     scale_x_discrete(labels=c("0" = "OL-0", "1" = "OL-1", "2" = "OL-2", "3" = "OL-3"))
   
-  ggsave(paste('./plots/', names(var), '_wild.pdf', sep=''), scale = 1.6, height = 6, width = 4, unit = "cm")
+  ggsave(paste('./outputs/', names(var), '_wild.pdf', sep=''), scale = 1.6, height = 6, width = 4, unit = "cm")
 }
 
 ############## Print Latex tables for summarizing the data collected for each RQ
