@@ -171,7 +171,7 @@ for (v in names(vars)) {
 }
 
 # Put the correlation results into a nicely formatted PDF
-pdf("correlation_results.pdf", height=11, width=10)
+pdf("./outputs/correlation_analysis/correlation_results.pdf", height=11, width=10)
 grid.table(correlation_results)
 dev.off()
 
