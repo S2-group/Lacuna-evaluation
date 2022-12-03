@@ -145,6 +145,7 @@ for (v in names(vars)) {
     # current_data$delta <- ((current_data[[v]] - current_data$baseline)/(current_data[[v]] + current_data$baseline)) * 100
     current_data$delta <- current_data[[v]] - current_data$baseline
                            
+    # Compute the Kendall's Tau correlation coefficient between the delta and the amount of removed dead code
     corr <- cor.test(current_data$delta, current_data$dead, method="kendall")
     correlation_results <- correlation_results %>% add_row(var=v, lvl=as.factor(i), p = corr$p.value, tau = corr$estimate)
     
@@ -174,31 +175,3 @@ for (v in names(vars)) {
 pdf("./outputs/correlation_analysis/correlation_results.pdf", height=11, width=10)
 grid.table(correlation_results)
 dev.off()
-
-# ############## Plot values for all subjects (data exploration)
-# 
-# fontSize = 9
-# 
-# for (i in seq(1,length(vars))) {
-# 
-#   var <- vars[i]
-#   
-#   # The maximum value of the scale on the Y axis is the maximum value of the metric, or 100 if the metric is a percentage
-#   min_y_value <- min(data[[names(var)]])
-#   max_y_value <- max(data[[names(var)]])
-#   if(names(var) == 'cpu' || names(var) == 'gpu') {
-#     max_y_value <- 100
-#   }
-# 
-#   bp <- ggplot(data, aes(x=subject_type, y=data[[names(var)]])) + ylim(min_y_value, max_y_value) + 
-#     # geom_violin(trim = FALSE, alpha = 0.5, position=position_dodge(0.9)) + 
-#     theme_bw() + xlab("") + ylab(var) +
-#     geom_boxplot(alpha=1, color="black", width=.8, fill="white", outlier.size=0) +
-#     stat_summary(fun.y=mean, colour="black", geom="point", 
-#                shape=5, size=1,show_guide = FALSE) +
-#     ggtitle(var) +
-#     guides(color=guide_legend(title="")) + theme(plot.title=element_text(size=fontSize), strip.text.x=element_text(size=fontSize), strip.text.y=element_text(size=fontSize),  axis.text.x=element_text(size=fontSize, angle = 45, hjust = 1), axis.text.y=element_text(size=fontSize), axis.title=element_text(size=fontSize)) +
-#     scale_x_discrete(labels=c("lab" = "Lab", "wild" = "Wild")) 
-#   
-#   ggsave(paste('./plots/overview_wild_lab/', names(var), '.pdf', sep=''), scale = 1.6, height = 4, width = 3, unit = "cm")
-# }
