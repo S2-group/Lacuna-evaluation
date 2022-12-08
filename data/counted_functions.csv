@@ -1,4 +1,4 @@
-subject_name,lvl,dead,alive,subject_type
+subject_name,lvl,removed,present,subject_type
 angularjs_require,0,0,41,lab
 angularjs_require,1,0,41,lab
 angularjs_require,2,0,41,lab

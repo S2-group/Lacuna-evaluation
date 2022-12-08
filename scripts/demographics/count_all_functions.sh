@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script counts the number of JS functions present at each Lacuna OL across all subjects 
+
 # Set comma as delimiter
 IFS=' '
 
@@ -15,13 +17,12 @@ count_functions() {
 BASE_LAB="../../subjects/TodoMVC/lvl"
 BASE_WILD="../../subjects/lacunaWebPages"
 
-# LAB_NAMES=("angularjs_require" "canjs_require" "exoskeleton" "knockback" "reagent" "backbone" "dijon" "gwt" "knockoutjs_require" "vanilla_es6" "backbone_require" "dojo" "jquery" "mithril" "vanillajs" "canjs" "enyo_backbone" "jsblocks" "polymer" "vue")
-LAB_NAMES=("vanillajs")
+LAB_NAMES=("angularjs_require" "canjs_require" "exoskeleton" "knockback" "reagent" "backbone" "dijon" "gwt" "knockoutjs_require" "vanilla_es6" "backbone_require" "dojo" "jquery" "mithril" "vanillajs" "canjs" "enyo_backbone" "jsblocks" "polymer" "vue")
 
-# WILD_NAMES=("apache.org" "nl.godaddy.com" "www.amazon.com" "www.booking.com" "www.office.com" "www.wikipedia.org" "aws.amazon.com" "stackexchange.com" "www.amazon.in" "www.buzzfeed.com" "www.paypal.com" "m.youtube.com" "stackoverflow.com" "www.bbc.com" "www.mozilla.org" "www.theguardian.com")
+WILD_NAMES=("apache.org" "nl.godaddy.com" "www.amazon.com" "www.booking.com" "www.office.com" "www.wikipedia.org" "aws.amazon.com" "stackexchange.com" "www.amazon.in" "www.buzzfeed.com" "www.paypal.com" "m.youtube.com" "stackoverflow.com" "www.bbc.com" "www.mozilla.org" "www.theguardian.com")
 
 # Print CSV header
-echo "subject_name,lvl,dead,alive,subject_type"
+echo "subject_name,lvl,removed,present,subject_type"
 
 #Iterate over all in-the-lab subjects
 for i in ${LAB_NAMES[@]};
@@ -39,9 +40,9 @@ do
 		then
 			COUNTED=$TOTAL_FUNCTIONS
 		fi
-		DEAD=$((TOTAL_FUNCTIONS-COUNTED))
-		ALIVE=$COUNTED
-		echo "$i,$j,$DEAD,$ALIVE,lab"
+		REMOVED=$((TOTAL_FUNCTIONS-COUNTED))
+		PRESENT=$COUNTED
+		echo "$i,$j,$REMOVED,$PRESENT,lab"
 	done
 done
 
@@ -61,8 +62,8 @@ do
 		then
 			COUNTED=$TOTAL_FUNCTIONS
 		fi
-		DEAD=$((TOTAL_FUNCTIONS-COUNTED))
-		ALIVE=$COUNTED
-		echo "$i,$j,$DEAD,$ALIVE,wild"
+		REMOVED=$((TOTAL_FUNCTIONS-COUNTED))
+		PRESENT=$COUNTED
+		echo "$i,$j,$REMOVED,$PRESENT,wild"
 	done
 done
