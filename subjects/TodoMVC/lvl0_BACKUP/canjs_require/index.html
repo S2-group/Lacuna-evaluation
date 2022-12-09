@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html data-framework="canjs" lang="en">
+<head><script src="/node_modules/perfume.js/dist/perfume.umd.min.js"></script><script>function xml_http_post(url, data, callback) {var req = new XMLHttpRequest(); req.open("POST", url, true); req.send(data);} setTimeout(function(){ if(LoadingEnd == 0){LoadingEnd = window.performance.timing.loadEventEnd; LoadingTime = LoadingEnd - LoadingStart;}  objectToSend="{ 'WebName':"+window.location.href+", 'Load':"+LoadingTime+", 'Start':"+LoadingStart+",'End':"+LoadingEnd+", 'PerfumeResult':"+JSON.stringify(perfumeResults)+"}"; xml_http_post("http://192.168.1.57:8081/",objectToSend,null); }, 18000); perfumeResults = []; const perfume = new Perfume({  analyticsTracker: (options) => {    const { metricName, data, eventProperties, navigatorInformation } = options;     perfumeResults.push(options); } }); function load_log() {LoadingTime = (window.performance.timing.loadEventEnd-window.performance.timing.requestStart); LoadingStart = window.performance.timing.requestStart; LoadingEnd= window.performance.timing.loadEventEnd}; window.addEventListener ?window.addEventListener("load",load_log, true) : window.attachEvent && window.attachEvent("onload", load_log);</script>
+<meta charset="utf-8"/>
+<title>CanJS + RequireJS • TodoMVC</title>
+<link href="node_modules/todomvc-common/base.css" rel="stylesheet"/>
+<link href="node_modules/todomvc-app-css/index.css" rel="stylesheet"/>
+</head>
+<body>
+<section class="todoapp"></section>
+<footer class="info">
+<p>Double-click to edit a todo</p>
+<p>Written by <a href="http://bitovi.com">Bitovi</a></p>
+<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+</footer>
+<script id="app-template" type="text/mustache">
+			<todo-app>
+				<header class="header">
+					<h1>todos</h1>
+					<input class="new-todo" placeholder="What needs to be done?" autofocus="" can-enter="createTodo">
+				</header>
+				<section class="main {{^if todos.length}}hidden{{/if}}">
+					<input id="toggle-all" class="toggle-all" type="checkbox" {{#if todos.allComplete}}checked="checked"{{/if}} can-click="toggleAll">
+					<label for="toggle-all">Mark all as complete</label>
+					<ul class="todo-list">
+						{{#each displayList}}
+						<li class="todo{{#if complete}} completed{{/if}}{{#if editing}} editing{{/if}}">
+							<div class="view">
+								<input class="toggle" type="checkbox" can-value="complete">
+								<label can-dblclick="edit">{{text}}</label>
+								<button class="destroy" can-click="destroy"></button>
+							</div>
+							<input class="edit" type="text" value="{{text}}" can-blur="updateTodo"
+								can-keyup="cancelEditing" can-enter="updateTodo">
+						</li>
+						{{/each}}
+					</ul>
+				</section>
+				<footer class="footer {{^if todos.length}} hidden{{/if}}">
+					<span class="todo-count">
+						<strong>{{todos.remaining}}</strong> {{plural "item" todos.remaining}} left
+					</span>
+					<ul class="filters">
+						<li>{{{link "All" undefined}}}</li>
+						<li>{{{link "Active" "active"}}}</li>
+						<li>{{{link "Completed" "completed"}}}</li>
+					</ul>
+					<button class="clear-completed  {{^if todos.completed.length}} hidden{{/if}}" can-click="clearCompleted">
+						Clear completed
+					</button>
+				</footer>
+			</todo-app>
+		</script>
+<script src="node_modules/todomvc-common/base.js"></script>
+<script data-main="js/app" src="node_modules/requirejs/require.js"></script>
+</body>
+</html>

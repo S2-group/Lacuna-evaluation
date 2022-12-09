@@ -54,7 +54,7 @@ function readFile(filename){
         files.forEach(function (file,idx,array){
 
            var isDirectory = fs.lstatSync(path.join(filename,file)).isDirectory(); //checks if file is a directory or file
-           if(!file.includes('test') && !file.includes('lacuna')) {
+           if(!file.includes('test')) { // && !file.includes('lacuna')) {
 
                if(((file.split('.'))[(file.split('.')).length-1] == 'js') && isDirectory == false){//getting the last element of the array after splitting the file name
 

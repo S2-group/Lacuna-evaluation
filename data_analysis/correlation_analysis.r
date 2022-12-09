@@ -26,7 +26,7 @@ font_size = 10
 ############################
 
 data = read.csv("../data/aggregated_results.csv", stringsAsFactors = TRUE)
-function_counts = read.csv("../data/counted_functions.csv", stringsAsFactors = TRUE)
+function_counts = read.csv("../data/counted_dead_alive_functions.csv", stringsAsFactors = TRUE)
 
 # Beautify the data
 
@@ -96,6 +96,7 @@ data_wild <- data %>% filter(subject_type == "wild")
 data_lab <- data %>% filter(subject_type == "lab")
 
 # We merge data and function_counts into a single dataframe
+# change the data parameter below to either data_wild or data_lab if you want to subset the analysed data
 all_data <- merge(data, function_counts, by=c("subject_name", "lvl", "subject_type"))
 
 # ############################
@@ -126,17 +127,23 @@ check_normality = function(data, var_name) {
 }
 
 columns = c("var","lvl","p","tau")
-correlation_results <- data.frame(matrix(nrow = 0, ncol = length(columns)))
-colnames(correlation_results) = columns
-correlation_results$lvl <- as.factor(correlation_results$lvl)
-correlation_results$var <- as.factor(correlation_results$var)
+correlation_results_delta <- data.frame(matrix(nrow = 0, ncol = length(columns)))
+colnames(correlation_results_delta) = columns
+correlation_results_delta$lvl <- as.factor(correlation_results_delta$lvl)
+correlation_results_delta$var <- as.factor(correlation_results_delta$var)
+correlation_results_raw <- data.frame(matrix(nrow = 0, ncol = length(columns)))
+colnames(correlation_results_raw) = columns
+correlation_results_raw$lvl <- as.factor(correlation_results_raw$lvl)
+correlation_results_raw$var <- as.factor(correlation_results_raw$var)
+
 
 for (v in names(vars)) {
   print(v)
   baselines <- all_data %>% filter(lvl == 0) %>% group_by(subject_name, lvl) %>% summarise_at(vars(v, dead), mean) %>% select(subject_name, v)
   for (i in c(1, 2, 3)) {
     print(paste(c("Current variable:", v, "Level: ", i, sep="")))
-    current_data <- all_data %>% filter(lvl == i)
+    # current_data <- all_data %>% filter(lvl == i)
+    current_data <- all_data %>% filter(lvl != 0)
     current_data <- current_data %>% group_by(subject_name, lvl) %>% summarise_at(vars(v, dead), mean)
     current_data <- merge(current_data, baselines, by=c("subject_name"))
 
@@ -147,31 +154,47 @@ for (v in names(vars)) {
                            
     # Compute the Kendall's Tau correlation coefficient between the delta and the amount of removed dead code
     corr <- cor.test(current_data$delta, current_data$dead, method="kendall")
-    correlation_results <- correlation_results %>% add_row(var=v, lvl=as.factor(i), p = corr$p.value, tau = corr$estimate)
+    correlation_results_delta <- correlation_results_delta %>% add_row(var=v, lvl=as.factor(i), p = corr$p.value, tau = corr$estimate)
     
     current_plot <- ggplot(current_data, aes(x=delta, y=dead, color=lvl)) +
       geom_point(alpha=0.5) +
       theme_bw() +
-      theme(legend.position = c(0.80, 0.80)) +
+      theme(legend.position = c(0.80, 0.70)) +
       scale_colour_discrete("OL") +
-      labs(x= paste0("Delta", " ", vars[[v]]), y="Removed dead JS functions") +
+      labs(x= paste0("Delta", " ", vars[[v]]), y="Detected dead JS functions") +
       geom_smooth(method=lm,se = FALSE, size=0.5)
-    ggsave(paste('./outputs/correlation_analysis/deltas/delta_ol', i, "_", v, '.pdf', sep=''), scale = 2, height = 3, width = 3, unit = "cm")
+    ggsave(paste('./outputs/correlation_analysis/deltas/delta', "_", v, '.pdf', sep=''), scale = 2, height = 3, width = 3, unit = "cm")
     
+    # Here we do the same as before, but with the raw data about dead code, not the delta
+    corr <- cor.test(current_data[[v]], current_data$dead, method="kendall")
+    correlation_results_raw <- correlation_results_raw %>% add_row(var=v, lvl=as.factor(i), p = corr$p.value, tau = corr$estimate)
+    
+    current_plot <- ggplot(current_data, aes(x=.data[[v]], y=dead, color=lvl)) +
+      geom_point(alpha=0.5) +
+      theme_bw() +
+      theme(legend.position = c(0.80, 0.70)) +
+      scale_colour_discrete("OL") +
+      labs(x= vars[[v]], y="Detected dead JS functions") +
+      geom_smooth(method=lm,se = FALSE, size=0.5)
+    ggsave(paste('./outputs/correlation_analysis/raw/raw', "_", v, '.pdf', sep=''), scale = 2, height = 3, width = 3, unit = "cm")
   }
   # Plot subjects separately across all levels. Variable: amount of dead code removed
-  current_data <- all_data
-  rmc <- rmcorr(participant = subject_name, measure1 = v, measure2 = dead, dataset = current_data)
-  current_plot <- ggplot(current_data, aes(x=.data[[v]], y=dead, color=factor(subject_name), group=factor(subject_name))) + 
-    geom_point(alpha=0.1, aes(color=factor(subject_name))) + 
-    geom_line(aes(y = rmc$model$fitted.values), linetype = 1, size=0.5) + 
-    theme_bw() + 
-    theme(legend.position = "none") +
-    labs(x= vars[[v]], y="Removed dead JS functions")
-  ggsave(paste('./outputs/correlation_analysis/raw/dead_', v, '.pdf', sep=''), scale = 2, height = 4, width = 6, unit = "cm")
+  # current_data <- all_data
+  # rmc <- rmcorr(participant = subject_name, measure1 = v, measure2 = dead, dataset = current_data)
+  # current_plot <- ggplot(current_data, aes(x=.data[[v]], y=dead, color=factor(subject_name), group=factor(subject_name))) + 
+  #   geom_point(alpha=0.1, aes(color=factor(subject_name))) + 
+  #   geom_line(aes(y = rmc$model$fitted.values), linetype = 1, size=0.5) + 
+  #   theme_bw() + 
+  #   theme(legend.position = "none") +
+  #   labs(x= vars[[v]], y="Detected dead JS functions")
+  # ggsave(paste('./outputs/correlation_analysis/raw/dead_', v, '.pdf', sep=''), scale = 2, height = 4, width = 6, unit = "cm")
 }
 
 # Put the correlation results into a nicely formatted PDF
-pdf("./outputs/correlation_analysis/correlation_results.pdf", height=11, width=10)
-grid.table(correlation_results)
+pdf("./outputs/correlation_analysis/correlation_results_delta.pdf", height=11, width=10)
+grid.table(correlation_results_delta)
+dev.off()
+
+pdf("./outputs/correlation_analysis/correlation_results_raw.pdf", height=11, width=10)
+grid.table(correlation_results_raw)
 dev.off()
