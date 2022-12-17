@@ -26,7 +26,7 @@ All the data and tools required for the replication of the experiment are provid
 * [scripts](https://github.com/S2-group/Lacuna-evaluation/tree/main/scripts) - Aggregation scripts adopted on raw data and scripts used on the subjects
 * [subjects](https://github.com/S2-group/Lacuna-evaluation/tree/main/subjects) - Web Applications executed on the mobile device during the experiment. For each subject there are 4 different versions, one for every optimization level in Lacuna V2. 
 	* [TodoMVC](https://github.com/S2-group/Lacuna-evaluation/tree/main/subjects/TodoMVC) - 20 web apps from the [TodoMVC project](https://todomvc.com/)  
-	* [lacunaWebPages](https://github.com/S2-group/Lacuna-evaluation/tree/main/subjects/lacunaWebPages) - 16 popular web pages which are part of the [Tranco](https://tranco-list.eu/) list.
+	* [lacunaWebPages](https://github.com/S2-group/Lacuna-evaluation/tree/main/subjects/lacunaWebPages) - 16 popular web pages which are part of the [Tranco](https://tranco-list.eu/) list. This folder contains also the set of all 150 potentially-usable subjects from the Tranco list
 
 ## Required software
 * [Http-server](https://www.npmjs.com/package/http-server) (`npm install http-server`)
