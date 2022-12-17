@@ -139,7 +139,10 @@ for (v in names(vars)) {
 check_normality = function(data, var_name) {
   print(var_name)
   plot(density(data), main=var_name) 
+  file_name = paste('./outputs/', var_name, '_qq.png', sep='')
+  dev.copy(png, file_name)
   qqPlot(data, main=var_name)
+  dev.off()
   print(shapiro.test(data))
 }
 
